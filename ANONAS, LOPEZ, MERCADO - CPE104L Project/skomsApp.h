@@ -108,7 +108,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->menuShadow = (gcnew System::Windows::Forms::PictureBox());
 			this->orderGroup = (gcnew System::Windows::Forms::GroupBox());
 			this->orderList = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			//this->oControl = (gcnew orderControl());
+			this->oControl = (gcnew orderControl());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->orderLabel = (gcnew System::Windows::Forms::Label());
 			this->orderNum = (gcnew System::Windows::Forms::Label());
@@ -202,7 +202,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderList->Size = System::Drawing::Size(299, 299);
 			this->orderList->TabIndex = 3;
 
-			//this->orderList->Controls->Add(oControl);
+			this->orderList->Controls->Add(oControl);
 			// 
 			// label1
 			// 
