@@ -41,7 +41,9 @@ protected:
 			delete components;
 		}
 	}
-private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
+private: System::Windows::Forms::NumericUpDown^ itemQuantity1;
+protected:
+
 protected:
 private: System::Windows::Forms::Label^ orderPrice;
 private: System::Windows::Forms::Label^ orderText1;
@@ -59,21 +61,21 @@ private:
 	/// </summary>
 	void InitializeComponent(void)
 	{
-		this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
+		this->itemQuantity1 = (gcnew System::Windows::Forms::NumericUpDown());
 		this->orderPrice = (gcnew System::Windows::Forms::Label());
 		this->orderText1 = (gcnew System::Windows::Forms::Label());
-		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
+		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemQuantity1))->BeginInit();
 		this->SuspendLayout();
 		// 
-		// numericUpDown1
+		// itemQuantity1
 		// 
-		this->numericUpDown1->ForeColor = System::Drawing::Color::DarkRed;
-		this->numericUpDown1->Location = System::Drawing::Point(237, 30);
-		this->numericUpDown1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 99, 0, 0, 0 });
-		this->numericUpDown1->Name = L"numericUpDown1";
-		this->numericUpDown1->Size = System::Drawing::Size(45, 20);
-		this->numericUpDown1->TabIndex = 5;
-		this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+		this->itemQuantity1->ForeColor = System::Drawing::Color::DarkRed;
+		this->itemQuantity1->Location = System::Drawing::Point(237, 30);
+		this->itemQuantity1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 99, 0, 0, 0 });
+		this->itemQuantity1->Name = L"itemQuantity1";
+		this->itemQuantity1->Size = System::Drawing::Size(45, 20);
+		this->itemQuantity1->TabIndex = 5;
+		this->itemQuantity1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 		// 
 		// orderPrice
 		// 
@@ -101,13 +103,13 @@ private:
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->Controls->Add(this->numericUpDown1);
+		this->Controls->Add(this->itemQuantity1);
 		this->Controls->Add(this->orderPrice);
 		this->Controls->Add(this->orderText1);
 		this->Name = L"orderControl";
 		this->Size = System::Drawing::Size(296, 69);
 		this->Load += gcnew System::EventHandler(this, &orderControl::orderControl_Load);
-		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
+		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemQuantity1))->EndInit();
 		this->ResumeLayout(false);
 		this->PerformLayout();
 
@@ -115,11 +117,13 @@ private:
 #pragma endregion
 private: System::Void orderControl_Load(System::Object^ sender, System::EventArgs^ e) {
 }
-	public: property System::String^ AmountText {
+/*
+public: property System::String^ AmountText {
 		String^ get() {
 			return "150";
 		}
 	}
+*/
 };
 
 	
