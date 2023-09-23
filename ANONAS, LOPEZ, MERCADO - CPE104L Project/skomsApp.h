@@ -6,9 +6,10 @@
 #include <msclr/marshal_cppstd.h> //convert String to string (String = string from GUI)
 #include <string>
 #include <iostream>
-#include "skiomFunctions.h"
-#include "orderControl.h"
+#include "skomFunctions.h"
 #pragma once
+
+customerView customer;
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
 
@@ -72,21 +73,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ itemName4;
 	private: System::Windows::Forms::PictureBox^ itemPic4;
 	private: System::Windows::Forms::FlowLayoutPanel^ orderList;
-	private: orderControl^ oControl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Panel^ orderPanel1;
+	private: System::Windows::Forms::NumericUpDown^ itemQuantity1;
+	private: System::Windows::Forms::Label^ orderPrice1;
+	private: System::Windows::Forms::Label^ orderText1;
 	protected:
 
 	private:
@@ -108,7 +98,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->menuShadow = (gcnew System::Windows::Forms::PictureBox());
 			this->orderGroup = (gcnew System::Windows::Forms::GroupBox());
 			this->orderList = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->oControl = (gcnew orderControl());
+			this->orderPanel1 = (gcnew System::Windows::Forms::Panel());
+			this->itemQuantity1 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->orderPrice1 = (gcnew System::Windows::Forms::Label());
+			this->orderText1 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->orderLabel = (gcnew System::Windows::Forms::Label());
 			this->orderNum = (gcnew System::Windows::Forms::Label());
@@ -132,6 +125,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->orderGroup->SuspendLayout();
+			this->orderList->SuspendLayout();
+			this->orderPanel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemQuantity1))->BeginInit();
 			this->menuLayout->SuspendLayout();
 			this->item1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemPic1))->BeginInit();
@@ -194,6 +190,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// 
 			// orderList
 			// 
+			this->orderList->AutoScroll = true;
+			this->orderList->Controls->Add(this->orderPanel1);
 			this->orderList->FlowDirection = System::Windows::Forms::FlowDirection::TopDown;
 			this->orderList->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -201,8 +199,51 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderList->Name = L"orderList";
 			this->orderList->Size = System::Drawing::Size(299, 299);
 			this->orderList->TabIndex = 3;
-
-			this->orderList->Controls->Add(oControl);
+			this->orderList->WrapContents = false;
+			// 
+			// orderPanel1
+			// 
+			this->orderPanel1->BackColor = System::Drawing::SystemColors::Control;
+			this->orderPanel1->Controls->Add(this->itemQuantity1);
+			this->orderPanel1->Controls->Add(this->orderPrice1);
+			this->orderPanel1->Controls->Add(this->orderText1);
+			this->orderPanel1->Location = System::Drawing::Point(3, 3);
+			this->orderPanel1->Margin = System::Windows::Forms::Padding(3, 3, 3, 10);
+			this->orderPanel1->Name = L"orderPanel1";
+			this->orderPanel1->Size = System::Drawing::Size(296, 69);
+			this->orderPanel1->TabIndex = 0;
+			// 
+			// itemQuantity1
+			// 
+			this->itemQuantity1->ForeColor = System::Drawing::Color::DarkRed;
+			this->itemQuantity1->Location = System::Drawing::Point(238, 30);
+			this->itemQuantity1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 99, 0, 0, 0 });
+			this->itemQuantity1->Name = L"itemQuantity1";
+			this->itemQuantity1->Size = System::Drawing::Size(45, 21);
+			this->itemQuantity1->TabIndex = 8;
+			this->itemQuantity1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			// 
+			// orderPrice1
+			// 
+			this->orderPrice1->AutoSize = true;
+			this->orderPrice1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->orderPrice1->Location = System::Drawing::Point(13, 34);
+			this->orderPrice1->Name = L"orderPrice1";
+			this->orderPrice1->Size = System::Drawing::Size(35, 16);
+			this->orderPrice1->TabIndex = 7;
+			this->orderPrice1->Text = L"P150";
+			// 
+			// orderText1
+			// 
+			this->orderText1->AutoSize = true;
+			this->orderText1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->orderText1->Location = System::Drawing::Point(13, 17);
+			this->orderText1->Name = L"orderText1";
+			this->orderText1->Size = System::Drawing::Size(110, 17);
+			this->orderText1->TabIndex = 6;
+			this->orderText1->Text = L"Placeholder Item";
 			// 
 			// label1
 			// 
@@ -459,6 +500,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->EndInit();
 			this->orderGroup->ResumeLayout(false);
 			this->orderGroup->PerformLayout();
+			this->orderList->ResumeLayout(false);
+			this->orderPanel1->ResumeLayout(false);
+			this->orderPanel1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemQuantity1))->EndInit();
 			this->menuLayout->ResumeLayout(false);
 			this->item1->ResumeLayout(false);
 			this->item1->PerformLayout();
@@ -481,13 +526,13 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
-		customerView customer;
 		msclr::interop::marshal_context context;
 		std::string itemName = context.marshal_as<std::string>(itemName1->Text);
-		std::string itemPrice = context.marshal_as<std::string>(itemPrice1->Text);
+		std::string itemPriceStr = context.marshal_as<std::string>(itemPrice1->Text);
+		float itemPrice = stoi(itemPriceStr.substr(1, itemPriceStr.length() - 1));
 		
 
-		customer.getItem();
+		customer.getItem(this->orderList, itemName, itemPrice);
 		
 	}
 };

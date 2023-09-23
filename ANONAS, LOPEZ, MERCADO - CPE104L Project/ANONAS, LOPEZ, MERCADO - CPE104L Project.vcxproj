@@ -121,23 +121,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="orderControl.cpp" />
-    <ClCompile Include="skiomFunctionsImp.cpp" />
+    <ClCompile Include="skomFunctionsImp.cpp" />
     <ClCompile Include="skomsApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="orderControl.h">
-      <FileType>CppControl</FileType>
-    </ClInclude>
-    <ClInclude Include="skiomFunctions.h" />
+    <ClInclude Include="skomFunctions.h" />
     <ClInclude Include="skomsApp.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="orderControl.resx">
-      <DependentUpon>orderControl.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="skomsApp.resx">
       <DependentUpon>skomsApp.h</DependentUpon>
     </EmbeddedResource>
