@@ -56,7 +56,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::GroupBox^ orderGroup;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ orderLabel;
-	private: System::Windows::Forms::Label^ orderNum;
+	private: System::Windows::Forms::Label^ orderNumLabel;
+
 	private: System::Windows::Forms::FlowLayoutPanel^ menuLayout;
 
 	private: System::Windows::Forms::Panel^ item1;
@@ -81,6 +82,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ cashLabel;
 	private: System::Windows::Forms::Label^ totalCost;
 	private: System::Windows::Forms::Label^ costLabel;
+	private: System::Windows::Forms::Label^ orderNum;
+
 
 
 
@@ -105,6 +108,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->menuLabel = (gcnew System::Windows::Forms::Label());
 			this->menuShadow = (gcnew System::Windows::Forms::PictureBox());
 			this->orderGroup = (gcnew System::Windows::Forms::GroupBox());
+			this->orderNum = (gcnew System::Windows::Forms::Label());
 			this->placeOrderButton = (gcnew System::Windows::Forms::Button());
 			this->enterCash = (gcnew System::Windows::Forms::TextBox());
 			this->cashLabel = (gcnew System::Windows::Forms::Label());
@@ -113,7 +117,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderList = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->orderLabel = (gcnew System::Windows::Forms::Label());
-			this->orderNum = (gcnew System::Windows::Forms::Label());
+			this->orderNumLabel = (gcnew System::Windows::Forms::Label());
 			this->menuLayout = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->item1 = (gcnew System::Windows::Forms::Panel());
 			this->itemName1 = (gcnew System::Windows::Forms::Label());
@@ -182,6 +186,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// orderGroup
 			// 
 			this->orderGroup->BackColor = System::Drawing::Color::White;
+			this->orderGroup->Controls->Add(this->orderNum);
 			this->orderGroup->Controls->Add(this->placeOrderButton);
 			this->orderGroup->Controls->Add(this->enterCash);
 			this->orderGroup->Controls->Add(this->cashLabel);
@@ -190,7 +195,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderGroup->Controls->Add(this->orderList);
 			this->orderGroup->Controls->Add(this->label1);
 			this->orderGroup->Controls->Add(this->orderLabel);
-			this->orderGroup->Controls->Add(this->orderNum);
+			this->orderGroup->Controls->Add(this->orderNumLabel);
 			this->orderGroup->Dock = System::Windows::Forms::DockStyle::Right;
 			this->orderGroup->Location = System::Drawing::Point(788, 60);
 			this->orderGroup->Name = L"orderGroup";
@@ -199,10 +204,21 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderGroup->TabIndex = 3;
 			this->orderGroup->TabStop = false;
 			// 
+			// orderNum
+			// 
+			this->orderNum->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->orderNum->AutoSize = true;
+			this->orderNum->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->orderNum->Location = System::Drawing::Point(278, 28);
+			this->orderNum->Name = L"orderNum";
+			this->orderNum->Size = System::Drawing::Size(49, 19);
+			this->orderNum->TabIndex = 9;
+			this->orderNum->Text = L"nnnn";
+			// 
 			// placeOrderButton
 			// 
 			this->placeOrderButton->BackColor = System::Drawing::Color::Green;
-			this->placeOrderButton->Enabled = false;
 			this->placeOrderButton->FlatAppearance->BorderColor = System::Drawing::Color::Green;
 			this->placeOrderButton->ForeColor = System::Drawing::Color::White;
 			this->placeOrderButton->Location = System::Drawing::Point(245, 504);
@@ -240,9 +256,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 				static_cast<System::Byte>(0)));
 			this->totalCost->Location = System::Drawing::Point(284, 425);
 			this->totalCost->Name = L"totalCost";
-			this->totalCost->Size = System::Drawing::Size(46, 21);
+			this->totalCost->Size = System::Drawing::Size(43, 21);
 			this->totalCost->TabIndex = 5;
-			this->totalCost->Text = L"P150";
+			this->totalCost->Text = L"Pxxx";
 			// 
 			// costLabel
 			// 
@@ -292,16 +308,16 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderLabel->TabIndex = 1;
 			this->orderLabel->Text = L"Order List:";
 			// 
-			// orderNum
+			// orderNumLabel
 			// 
-			this->orderNum->AutoSize = true;
-			this->orderNum->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->orderNumLabel->AutoSize = true;
+			this->orderNumLabel->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->orderNum->Location = System::Drawing::Point(27, 28);
-			this->orderNum->Name = L"orderNum";
-			this->orderNum->Size = System::Drawing::Size(127, 19);
-			this->orderNum->TabIndex = 0;
-			this->orderNum->Text = L"Order number: ";
+			this->orderNumLabel->Location = System::Drawing::Point(27, 28);
+			this->orderNumLabel->Name = L"orderNumLabel";
+			this->orderNumLabel->Size = System::Drawing::Size(127, 19);
+			this->orderNumLabel->TabIndex = 0;
+			this->orderNumLabel->Text = L"Order number: ";
 			// 
 			// menuLayout
 			// 
@@ -346,7 +362,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic1->Location = System::Drawing::Point(0, 0);
 			this->itemPic1->Name = L"itemPic1";
 			this->itemPic1->Size = System::Drawing::Size(160, 130);
-			this->itemPic1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->itemPic1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic1->TabIndex = 0;
 			this->itemPic1->TabStop = false;
 			// 
@@ -454,7 +470,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic3->Location = System::Drawing::Point(0, 0);
 			this->itemPic3->Name = L"itemPic3";
 			this->itemPic3->Size = System::Drawing::Size(160, 130);
-			this->itemPic3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->itemPic3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic3->TabIndex = 0;
 			this->itemPic3->TabStop = false;
 			// 
