@@ -1,9 +1,9 @@
-// SKIOM PROJECT FOR CPE104L, BY: -----------------------------------------------------
+// SKOM PROJECT FOR CPE104L, BY: -----------------------------------------------------
 // Anonas, Azrael
 // Lopez, John Mark
 // Mercado, Godwyn Summer
 // LIBRARIES --------------------------------------------------------------------------
-#include <msclr/marshal_cppstd.h> //convert String to string (String = string from GUI)
+#include <msclr/marshal_cppstd.h>
 #include <string>
 #include <iostream>
 #include "skomFunctions.h"
@@ -457,11 +457,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemName3->AutoSize = true;
 			this->itemName3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemName3->Location = System::Drawing::Point(28, 146);
+			this->itemName3->Location = System::Drawing::Point(44, 146);
 			this->itemName3->Name = L"itemName3";
-			this->itemName3->Size = System::Drawing::Size(110, 17);
+			this->itemName3->Size = System::Drawing::Size(70, 17);
 			this->itemName3->TabIndex = 1;
-			this->itemName3->Text = L"Placeholder Item";
+			this->itemName3->Text = L"Ice Cream";
 			this->itemName3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemPic3
