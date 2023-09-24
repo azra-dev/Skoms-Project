@@ -8,3 +8,4 @@ int main(array<String^>^ args) {
 	ANONASLOPEZMERCADOCPE104LProject::skomsApp form;
 	Application::Run(% form);
 }
+

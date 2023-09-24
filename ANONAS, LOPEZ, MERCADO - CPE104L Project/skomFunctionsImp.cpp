@@ -6,7 +6,22 @@
 
 using namespace System::Windows::Forms;
 
-#include <vector>
+bool customerView::checkUniqueOrder(std::string itemName) {
+	std::vector<std::string>::iterator orderIter;
+	for (orderIter = customerOrderList.begin(); orderIter != customerOrderList.end(); ++orderIter) {
+		if (*orderIter == itemName) {
+			return false;
+			break;
+		}
+	}
+	customerOrderList.push_back(itemName);
+	customerOrderQuantity.push_back(1);
+	return true;
+}
+
+std::vector<std::string> customerView::getOrderList() {
+	return customerOrderList;
+}
 
 void customerView::getItem(System::Windows::Forms::FlowLayoutPanel^ orderList,std::string itemName, float itemPrice) {
 	noOfPanels++;
@@ -55,12 +70,9 @@ void customerView::getItem(System::Windows::Forms::FlowLayoutPanel^ orderList,st
 	newQuantity->Size = System::Drawing::Size(45, 21);
 	newQuantity->TabIndex = 8;
 	newQuantity->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
-
-
-
-
 }
 
-void customerView::checkOrderIndex() {
-
+void customerView::updateItem(System::Windows::Forms::FlowLayoutPanel^ orderList, std::string itemName) {
+	//write a program that update "customerOrderQuantity" with an increment of 1.
+	//also update customerOrderQuantity afterwards, must be the same index of the vector (customerOrderList)
 }
