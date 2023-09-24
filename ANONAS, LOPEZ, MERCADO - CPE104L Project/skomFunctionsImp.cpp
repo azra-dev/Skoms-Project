@@ -46,7 +46,7 @@ void customerView::getItem(System::Windows::Forms::FlowLayoutPanel^ orderList,st
 	newText->Name = L"orderText" + noOfPanels.ToString();;
 	newText->Size = System::Drawing::Size(110, 17);
 	newText->TabIndex = 6;
-	newText->Text = L"Placeholder Item";
+	newText->Text = gcnew System::String(itemName.c_str());
 
 	//create child: Price
 	Label^ newPrice = gcnew Label();
@@ -58,7 +58,7 @@ void customerView::getItem(System::Windows::Forms::FlowLayoutPanel^ orderList,st
 	newPrice->Name = L"orderPrice" + noOfPanels.ToString();
 	newPrice->Size = System::Drawing::Size(35, 16);
 	newPrice->TabIndex = 7;
-	newPrice->Text = L"P150";
+	newPrice->Text = L"P" + gcnew System::String(itemPrice.ToString());
 
 	//create child: Quantity
 	NumericUpDown^ newQuantity = gcnew NumericUpDown();
@@ -73,6 +73,7 @@ void customerView::getItem(System::Windows::Forms::FlowLayoutPanel^ orderList,st
 }
 
 void customerView::updateItem(System::Windows::Forms::FlowLayoutPanel^ orderList, std::string itemName) {
-	//write a program that update "customerOrderQuantity" with an increment of 1.
+	//update "customerOrderQuantity" with an increment of 1.
 	//also update customerOrderQuantity afterwards, must be the same index of the vector (customerOrderList)
 }
+

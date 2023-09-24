@@ -12,6 +12,8 @@
 
 customerView customer;
 
+void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderList,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice);
+
 namespace ANONASLOPEZMERCADOCPE104LProject {
 
 	using namespace System;
@@ -74,6 +76,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ itemName4;
 	private: System::Windows::Forms::PictureBox^ itemPic4;
 	private: System::Windows::Forms::FlowLayoutPanel^ orderList;
+	private: System::Windows::Forms::Button^ placeOrderButton;
+	private: System::Windows::Forms::TextBox^ enterCash;
+	private: System::Windows::Forms::Label^ cashLabel;
+	private: System::Windows::Forms::Label^ totalCost;
+	private: System::Windows::Forms::Label^ costLabel;
 
 
 
@@ -98,6 +105,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->menuLabel = (gcnew System::Windows::Forms::Label());
 			this->menuShadow = (gcnew System::Windows::Forms::PictureBox());
 			this->orderGroup = (gcnew System::Windows::Forms::GroupBox());
+			this->placeOrderButton = (gcnew System::Windows::Forms::Button());
+			this->enterCash = (gcnew System::Windows::Forms::TextBox());
+			this->cashLabel = (gcnew System::Windows::Forms::Label());
+			this->totalCost = (gcnew System::Windows::Forms::Label());
+			this->costLabel = (gcnew System::Windows::Forms::Label());
 			this->orderList = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->orderLabel = (gcnew System::Windows::Forms::Label());
@@ -170,6 +182,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// orderGroup
 			// 
 			this->orderGroup->BackColor = System::Drawing::Color::White;
+			this->orderGroup->Controls->Add(this->placeOrderButton);
+			this->orderGroup->Controls->Add(this->enterCash);
+			this->orderGroup->Controls->Add(this->cashLabel);
+			this->orderGroup->Controls->Add(this->totalCost);
+			this->orderGroup->Controls->Add(this->costLabel);
 			this->orderGroup->Controls->Add(this->orderList);
 			this->orderGroup->Controls->Add(this->label1);
 			this->orderGroup->Controls->Add(this->orderLabel);
@@ -181,6 +198,62 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderGroup->Size = System::Drawing::Size(348, 549);
 			this->orderGroup->TabIndex = 3;
 			this->orderGroup->TabStop = false;
+			// 
+			// placeOrderButton
+			// 
+			this->placeOrderButton->BackColor = System::Drawing::Color::Green;
+			this->placeOrderButton->Enabled = false;
+			this->placeOrderButton->FlatAppearance->BorderColor = System::Drawing::Color::Green;
+			this->placeOrderButton->ForeColor = System::Drawing::Color::White;
+			this->placeOrderButton->Location = System::Drawing::Point(245, 504);
+			this->placeOrderButton->Name = L"placeOrderButton";
+			this->placeOrderButton->Size = System::Drawing::Size(85, 25);
+			this->placeOrderButton->TabIndex = 8;
+			this->placeOrderButton->Text = L"Place Order";
+			this->placeOrderButton->UseVisualStyleBackColor = false;
+			// 
+			// enterCash
+			// 
+			this->enterCash->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->enterCash->BackColor = System::Drawing::SystemColors::Control;
+			this->enterCash->Location = System::Drawing::Point(230, 455);
+			this->enterCash->Name = L"enterCash";
+			this->enterCash->Size = System::Drawing::Size(100, 20);
+			this->enterCash->TabIndex = 7;
+			// 
+			// cashLabel
+			// 
+			this->cashLabel->AutoSize = true;
+			this->cashLabel->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->cashLabel->Location = System::Drawing::Point(28, 456);
+			this->cashLabel->Name = L"cashLabel";
+			this->cashLabel->Size = System::Drawing::Size(93, 19);
+			this->cashLabel->TabIndex = 6;
+			this->cashLabel->Text = L"Enter Cash:";
+			// 
+			// totalCost
+			// 
+			this->totalCost->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->totalCost->AutoSize = true;
+			this->totalCost->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->totalCost->Location = System::Drawing::Point(284, 425);
+			this->totalCost->Name = L"totalCost";
+			this->totalCost->Size = System::Drawing::Size(46, 21);
+			this->totalCost->TabIndex = 5;
+			this->totalCost->Text = L"P150";
+			// 
+			// costLabel
+			// 
+			this->costLabel->AutoSize = true;
+			this->costLabel->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->costLabel->Location = System::Drawing::Point(27, 427);
+			this->costLabel->Name = L"costLabel";
+			this->costLabel->Size = System::Drawing::Size(85, 19);
+			this->costLabel->TabIndex = 4;
+			this->costLabel->Text = L"Total Cost:";
 			// 
 			// orderList
 			// 
@@ -196,6 +269,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// 
 			// label1
 			// 
+			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -300,6 +374,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->item2->Name = L"item2";
 			this->item2->Size = System::Drawing::Size(160, 200);
 			this->item2->TabIndex = 3;
+			this->item2->Click += gcnew System::EventHandler(this, &skomsApp::click_item2);
 			// 
 			// itemPrice2
 			// 
@@ -347,6 +422,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->item3->Name = L"item3";
 			this->item3->Size = System::Drawing::Size(160, 200);
 			this->item3->TabIndex = 5;
+			this->item3->Click += gcnew System::EventHandler(this, &skomsApp::click_item3);
 			// 
 			// itemPrice3
 			// 
@@ -394,6 +470,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->item4->Name = L"item4";
 			this->item4->Size = System::Drawing::Size(160, 200);
 			this->item4->TabIndex = 4;
+			this->item4->Click += gcnew System::EventHandler(this, &skomsApp::click_item4);
 			// 
 			// itemPrice4
 			// 
@@ -412,11 +489,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemName4->AutoSize = true;
 			this->itemName4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemName4->Location = System::Drawing::Point(28, 146);
+			this->itemName4->Location = System::Drawing::Point(38, 146);
 			this->itemName4->Name = L"itemName4";
-			this->itemName4->Size = System::Drawing::Size(110, 17);
+			this->itemName4->Size = System::Drawing::Size(89, 17);
 			this->itemName4->TabIndex = 1;
-			this->itemName4->Text = L"Placeholder Item";
+			this->itemName4->Text = L"Peanut Butter";
 			this->itemName4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemPic4
@@ -471,19 +548,30 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
-		msclr::interop::marshal_context context;
-		std::string itemName = context.marshal_as<std::string>(itemName1->Text);
-		std::string itemPriceStr = context.marshal_as<std::string>(itemPrice1->Text);
-		float itemPrice = stoi(itemPriceStr.substr(1, itemPriceStr.length() - 1));
-
-		if (customer.checkUniqueOrder(itemName)) {
-			customer.getItem(this->orderList, itemName, itemPrice);
-		}
-		else {
-			customer.updateItem(this->orderList, itemName);
-		}
-		
-		
+		itemOnClick(this->orderList, itemName1, itemPrice1);	
+	}
+	private: System::Void click_item2(System::Object^ sender, System::EventArgs^ e) {
+		itemOnClick(this->orderList, itemName2, itemPrice2);
+	}
+	private: System::Void click_item3(System::Object^ sender, System::EventArgs^ e) {
+		itemOnClick(this->orderList, itemName3, itemPrice3);
+	}
+	private: System::Void click_item4(System::Object^ sender, System::EventArgs^ e) {
+		itemOnClick(this->orderList, itemName4, itemPrice4);
 	}
 };
+}
+
+void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderList, System::Windows::Forms::Label^ itemNameX, System::Windows::Forms::Label^ itemPriceX) {
+	msclr::interop::marshal_context context;
+	std::string itemName = context.marshal_as<std::string>(itemNameX->Text);
+	std::string itemPriceStr = context.marshal_as<std::string>(itemPriceX->Text);
+	float itemPrice = stoi(itemPriceStr.substr(1, itemPriceStr.length() - 1));
+
+	if (customer.checkUniqueOrder(itemName)) {
+		customer.getItem(orderList, itemName, itemPrice);
+	}
+	else {
+		customer.updateItem(orderList, itemName);
+	}
 }
