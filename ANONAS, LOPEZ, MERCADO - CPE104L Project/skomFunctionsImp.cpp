@@ -5,7 +5,25 @@
 #include <string>
 
 using namespace System::Windows::Forms;
+using namespace System::Collections::Generic;
 
+//managed classes
+void managedNumeric::initializeNumericList() {
+	managedNumericQuantity = gcnew System::Collections::Generic::List<System::Windows::Forms::NumericUpDown^>();
+}
+
+void managedNumeric::addManagedNumeric(System::Windows::Forms::NumericUpDown^ numericQuantity) {
+	if (managedNumericQuantity == nullptr) {
+		managedNumericQuantity = gcnew System::Collections::Generic::List<System::Windows::Forms::NumericUpDown^>();
+	}
+	managedNumericQuantity->Add(numericQuantity);
+}
+
+List<NumericUpDown^>^ managedNumeric::accessManagedNumeric() {
+	return managedNumericQuantity;
+}
+
+//non-managed classes
 bool customerView::checkUniqueOrder(std::string itemName) {
 	std::vector<std::string>::iterator orderIter;
 	for (orderIter = customerOrderList.begin(); orderIter != customerOrderList.end(); ++orderIter) {
@@ -70,10 +88,40 @@ void customerView::getItem(System::Windows::Forms::FlowLayoutPanel^ orderList,st
 	newQuantity->Size = System::Drawing::Size(45, 21);
 	newQuantity->TabIndex = 8;
 	newQuantity->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+
+	//numericQuantity->Insert(noOfPanels - 1, newQuantity);
+	//managedQuantity->numericQuantity;
+	managedNumeric^ managedObject = managedNumeric::getInstance();
+	managedObject->addManagedNumeric(newQuantity);
 }
 
 void customerView::updateItem(System::Windows::Forms::FlowLayoutPanel^ orderList, std::string itemName) {
 	//update "customerOrderQuantity" with an increment of 1.
 	//also update customerOrderQuantity afterwards, must be the same index of the vector (customerOrderList)
+	std::vector<std::string>::iterator orderIter;
+	std::vector<int>::iterator quantityIter;
+	int index = -1;
+	for (orderIter = customerOrderList.begin(); orderIter != customerOrderList.end(); ++orderIter) {
+		index++;
+		if (*orderIter == itemName) {
+			break;
+		}
+	}
+	
+	quantityIter = customerOrderQuantity.begin();
+	for (int i = 0; i < index; i++) {
+		++quantityIter;
+	}
+
+	int indexCounter = -1;
+	managedNumeric^ managedObject = managedNumeric::getInstance();
+	List<NumericUpDown^>^ numericList = managedObject->accessManagedNumeric();
+	for each (NumericUpDown ^ t in managedObject->accessManagedNumeric()) {
+		indexCounter++;
+		if (indexCounter == index) {
+			t->Value++;
+		}
+	}
+	
 }
 
