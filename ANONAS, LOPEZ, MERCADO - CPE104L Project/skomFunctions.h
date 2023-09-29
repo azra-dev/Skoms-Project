@@ -1,3 +1,10 @@
+//WARNING: THIS IS AN OUTDATED HEADER FILE
+//WARNING: THIS IS AN OUTDATED HEADER FILE
+//WARNING: THIS IS AN OUTDATED HEADER FILE
+//WARNING: THIS IS AN OUTDATED HEADER FILE
+//WARNING: THIS IS AN OUTDATED HEADER FILE
+//WARNING: THIS IS AN OUTDATED HEADER FILE
+//WARNING: THIS IS AN OUTDATED HEADER FILE
 #pragma once
 
 #ifndef H_skomFunctions
@@ -10,9 +17,9 @@
 #include <vector>
 #include <iterator>
 
-
+//old class -x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
 public ref class managedNumeric {
-private: 
+private:
 	static managedNumeric^ managedObject = nullptr;
 	System::Collections::Generic::List<System::Windows::Forms::NumericUpDown^>^ managedNumericQuantity;
 public:

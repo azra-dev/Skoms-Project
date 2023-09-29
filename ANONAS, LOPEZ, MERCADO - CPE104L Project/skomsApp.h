@@ -6,13 +6,12 @@
 #include <msclr/marshal_cppstd.h>
 #include <string>
 #include <iostream>
-#include "skomFunctions.h"
-#include <vector>
+#include "order.h"
 #pragma once
 
-customerView customer;
+//customerView customer;
 
-void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderList,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice);
+void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice);
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
 
@@ -578,16 +577,18 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 };
 }
 
-void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderList, System::Windows::Forms::Label^ itemNameX, System::Windows::Forms::Label^ itemPriceX) {
+void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel, System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPriceX) {
 	msclr::interop::marshal_context context;
-	std::string itemName = context.marshal_as<std::string>(itemNameX->Text);
 	std::string itemPriceStr = context.marshal_as<std::string>(itemPriceX->Text);
 	float itemPrice = stoi(itemPriceStr.substr(1, itemPriceStr.length() - 1));
 
-	if (customer.checkUniqueOrder(itemName)) {
-		customer.getItem(orderList, itemName, itemPrice);
+	order^ itemDetail = gcnew order;
+	orderDetail^ orderDetails = orderDetail::getOrderDetails();
+	if (orderDetails->checkUniqueOrder(itemName->Text) == nullptr) {
+		itemDetail->addItem(itemDetail, orderListPanel, itemName->Text, itemPrice);
 	}
 	else {
-		customer.updateItem(orderList, itemName);
+		System::Diagnostics::Debug::WriteLine(orderDetails->checkUniqueOrder(itemName->Text)->getItemName());
+		orderDetails->checkUniqueOrder(itemName->Text)->updateItem(orderListPanel);
 	}
 }

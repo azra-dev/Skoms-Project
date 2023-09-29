@@ -121,10 +121,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="orderImp.cpp" />
+    <ClCompile Include="orderViewImp.cpp" />
     <ClCompile Include="skomFunctionsImp.cpp" />
     <ClCompile Include="skomsApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="order.h" />
     <ClInclude Include="skomFunctions.h" />
     <ClInclude Include="skomsApp.h">
       <FileType>CppForm</FileType>

@@ -1,9 +1,17 @@
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+//WARNING: THIS IS AN OUTDATED IMPLEMENTATION FILE
+
 #include "skomFunctions.h"
-//#include "skomsApp.h"
 #include <msclr/marshal_cppstd.h>
 #include <iostream>
 #include <string>
 
+using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Collections::Generic;
 
