@@ -92,13 +92,17 @@ void orderDetail::calculateTotal() {
 	orderGUI->updateTotalLabel(totalCost);
 }
 
+void orderDetail::placeOrder(float tender) {
+
+}
+
 //orderListView -----------------------------------------------------------------------
 void orderListView::updateTotalLabel(float cost) {
 	totalCost->Text = L"P" + cost.ToString();
 	if (cost > 0) {
 		placeOrderButton->BackColor = System::Drawing::Color::Crimson;
 		placeOrderButton->Cursor = System::Windows::Forms::Cursors::Hand;
-		placeOrderButton->Enabled = false;
+		placeOrderButton->Enabled = true;
 	}
 	else {
 		placeOrderButton->BackColor = System::Drawing::Color::Gray;

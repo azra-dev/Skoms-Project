@@ -240,9 +240,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->enterCash->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->enterCash->BackColor = System::Drawing::SystemColors::Control;
 			this->enterCash->Location = System::Drawing::Point(230, 455);
+			this->enterCash->MaxLength = 8;
 			this->enterCash->Name = L"enterCash";
 			this->enterCash->Size = System::Drawing::Size(100, 20);
 			this->enterCash->TabIndex = 7;
+			this->enterCash->TextChanged += gcnew System::EventHandler(this, &skomsApp::enterCash_TextChanged);
 			// 
 			// cashLabel
 			// 
@@ -594,7 +596,27 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		this->dateTrans->Text = System::DateTime::Now.ToString();
 	}
 	private: System::Void placeOrderButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		//place order
+		String^ input = enterCash->Text;
+		float cash = (float)(Convert::ToDouble(input));
+		float cost = (float)(Convert::ToDouble( this->totalCost->Text->Substring(1, this->totalCost->Text->Length-1 )));
+		float check;
+
+		if (!float::TryParse(input, check)) {
+			MessageBox::Show("The input " + input + " is not a valid numeric value. Please try again.", "Error: Invalid Input.", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		else if (cost > cash) {
+			MessageBox::Show("The input " + input + " is insufficient. Please try again.", "Error: Insufficient Amount.", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		else {
+			orderDetail^ detail = orderDetail::getOrderDetails();
+			detail->placeOrder(cash);
+			if (MessageBox::Show("Cofirm order?", "Finalization", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
+				System::Diagnostics::Debug::WriteLine("Done!");
+			}
+		}
+	}
+	private: System::Void enterCash_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		
 	}
 };
 }

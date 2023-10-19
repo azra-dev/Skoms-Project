@@ -42,7 +42,7 @@ private:
 	static orderDetail^ userOrder = nullptr;
 	List<order^>^ customerOrderList;
 	float totalCost = 0;
-	float totalCash = 0;
+	float totalTender = 0;
 	System::DateTime transTime;
 public:
 	//intitialize once if an order detail object does not exists
@@ -67,6 +67,9 @@ public:
 
 	//calculate the total cost
 	void calculateTotal();
+
+	//finalize placing the order
+	void placeOrder(float tender);
 };
 
 public ref class orderListView {
