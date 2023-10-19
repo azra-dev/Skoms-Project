@@ -13,29 +13,37 @@ using namespace System::Collections::Generic;
 
 public ref class order {
 private:
-	NumericUpDown^ numericQuantity;
+	//NumericUpDown^ numericQuantity;
 	String^ itemName;
 	int itemQuantity;
+	Label^ quantityLabel;
 	float itemPrice;
 	DateTime estimatedTime;
+	Panel^ itemPanel;
 public:
 	//Add the item into the order list. 
-	void addItem(order^ itemDetail, FlowLayoutPanel^ orderListPanel, String^ name, float price);
+	void addItem(order^ itemDetail, FlowLayoutPanel^ orderListPanel, String^ name, float price, Label^ quantityLabel);
 
 	//Get the item from the order list.
 	String^ getItemName() { return itemName; }
+	int getItemQuantity() { return itemQuantity; }
+	float getItemPrice() { return itemPrice; }
 
-	//update the quantity of the item
-	void updateItem(FlowLayoutPanel^ orderListPanel);
+	//update the quantity of the item through panels
+	void updateItem();
+
+	//update the quantity of the item through buttons
+	void updateItem(int mode);
 };
 
 
 public ref class orderDetail {
 private:
 	static orderDetail^ userOrder = nullptr;
+	List<order^>^ customerOrderList;
 	float totalCost = 0;
 	float totalCash = 0;
-	List<order^>^ customerOrderList;
+	System::DateTime transTime;
 public:
 	//intitialize once if an order detail object does not exists
 	static orderDetail^ getOrderDetails() {
@@ -53,12 +61,24 @@ public:
 
 	//add an order object to the list
 	void addToOrderList(order^ itemDetail);
+
+	//delete an order object to the list
+	void deleteFromOrderList(order^ itemDetail);
+
+	//calculate the total cost
+	void calculateTotal();
 };
 
 public ref class orderListView {
 private:
+	System::Void editQuantity(System::Object^ sender, System::EventArgs^ e);
 	static orderListView^ userOrderView = nullptr;
+	FlowLayoutPanel^ orderPanel = nullptr;
 	int noOfPanels = 0;
+	Label^ orderNum;
+	Label^ dateTrans;
+	Label^ totalCost;
+	Button^ placeOrderButton;
 public:
 	//intitialize once if an order list view does not exists for GUI side
 	static orderListView^ getOrderList() {
@@ -68,9 +88,22 @@ public:
 		return userOrderView;
 	}
 
+	//initialize UI
+	void loadGUI(Label^ w, Label^ x, Label^ y, Button^ z) {
+		orderNum = w;
+		dateTrans = x;
+		totalCost = y;
+		placeOrderButton = z;
+	}
+
 	//add panels into the order list
-	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(order::typeid));
-	void addOrderPanel(FlowLayoutPanel^ orderListPanel, String^ name, float price, NumericUpDown^ numericQuantity);
+	void addOrderPanel(FlowLayoutPanel^ orderListPanel, String^ name, float price, Label^ quantityLabel, Panel^ panel);
+
+	//remove panels into the order list
+	void deleteOrderPanel(Panel^ panel);
+
+	//update the totalCost label in GUI
+	void updateTotalLabel(float cost);
 };
 
 

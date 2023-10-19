@@ -53,7 +53,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ menuLabel;
 	private: System::Windows::Forms::PictureBox^ menuShadow;
 	private: System::Windows::Forms::GroupBox^ orderGroup;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ dateTrans;
+
 	private: System::Windows::Forms::Label^ orderLabel;
 	private: System::Windows::Forms::Label^ orderNumLabel;
 
@@ -82,6 +83,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ totalCost;
 	private: System::Windows::Forms::Label^ costLabel;
 	private: System::Windows::Forms::Label^ orderNum;
+	private: System::Windows::Forms::Timer^ watcher;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -93,7 +96,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -102,6 +105,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(skomsApp::typeid));
 			this->menuBox = (gcnew System::Windows::Forms::PictureBox());
 			this->menuLabel = (gcnew System::Windows::Forms::Label());
@@ -114,7 +118,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->totalCost = (gcnew System::Windows::Forms::Label());
 			this->costLabel = (gcnew System::Windows::Forms::Label());
 			this->orderList = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->dateTrans = (gcnew System::Windows::Forms::Label());
 			this->orderLabel = (gcnew System::Windows::Forms::Label());
 			this->orderNumLabel = (gcnew System::Windows::Forms::Label());
 			this->menuLayout = (gcnew System::Windows::Forms::FlowLayoutPanel());
@@ -134,6 +138,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPrice4 = (gcnew System::Windows::Forms::Label());
 			this->itemName4 = (gcnew System::Windows::Forms::Label());
 			this->itemPic4 = (gcnew System::Windows::Forms::PictureBox());
+			this->watcher = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->orderGroup->SuspendLayout();
@@ -192,7 +197,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderGroup->Controls->Add(this->totalCost);
 			this->orderGroup->Controls->Add(this->costLabel);
 			this->orderGroup->Controls->Add(this->orderList);
-			this->orderGroup->Controls->Add(this->label1);
+			this->orderGroup->Controls->Add(this->dateTrans);
 			this->orderGroup->Controls->Add(this->orderLabel);
 			this->orderGroup->Controls->Add(this->orderNumLabel);
 			this->orderGroup->Dock = System::Windows::Forms::DockStyle::Right;
@@ -217,7 +222,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// 
 			// placeOrderButton
 			// 
-			this->placeOrderButton->BackColor = System::Drawing::Color::Green;
+			this->placeOrderButton->BackColor = System::Drawing::Color::Gray;
+			this->placeOrderButton->Cursor = System::Windows::Forms::Cursors::Default;
+			this->placeOrderButton->Enabled = false;
 			this->placeOrderButton->FlatAppearance->BorderColor = System::Drawing::Color::Green;
 			this->placeOrderButton->ForeColor = System::Drawing::Color::White;
 			this->placeOrderButton->Location = System::Drawing::Point(245, 504);
@@ -226,6 +233,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->placeOrderButton->TabIndex = 8;
 			this->placeOrderButton->Text = L"Place Order";
 			this->placeOrderButton->UseVisualStyleBackColor = false;
+			this->placeOrderButton->Click += gcnew System::EventHandler(this, &skomsApp::placeOrderButton_Click);
 			// 
 			// enterCash
 			// 
@@ -255,9 +263,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 				static_cast<System::Byte>(0)));
 			this->totalCost->Location = System::Drawing::Point(284, 425);
 			this->totalCost->Name = L"totalCost";
-			this->totalCost->Size = System::Drawing::Size(43, 21);
+			this->totalCost->Size = System::Drawing::Size(28, 21);
 			this->totalCost->TabIndex = 5;
-			this->totalCost->Text = L"Pxxx";
+			this->totalCost->Text = L"P0";
 			// 
 			// costLabel
 			// 
@@ -282,19 +290,19 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderList->TabIndex = 3;
 			this->orderList->WrapContents = false;
 			// 
-			// label1
+			// dateTrans
 			// 
-			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->dateTrans->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->dateTrans->AutoSize = true;
+			this->dateTrans->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::DimGray;
-			this->label1->Location = System::Drawing::Point(253, 52);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(77, 16);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"mm/dd/yyyy";
-			this->label1->TextAlign = System::Drawing::ContentAlignment::TopRight;
+			this->dateTrans->ForeColor = System::Drawing::Color::DimGray;
+			this->dateTrans->Location = System::Drawing::Point(195, 52);
+			this->dateTrans->Name = L"dateTrans";
+			this->dateTrans->Size = System::Drawing::Size(132, 16);
+			this->dateTrans->TabIndex = 2;
+			this->dateTrans->Text = L"mm/dd/yyyy aa:bb:cc";
+			this->dateTrans->TextAlign = System::Drawing::ContentAlignment::TopRight;
 			// 
 			// orderLabel
 			// 
@@ -520,9 +528,12 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->itemPic4->TabIndex = 0;
 			this->itemPic4->TabStop = false;
-
-
-
+			// 
+			// watcher
+			// 
+			this->watcher->Enabled = true;
+			this->watcher->Interval = 1000;
+			this->watcher->Tick += gcnew System::EventHandler(this, &skomsApp::watcher_Tick);
 			// 
 			// skomsApp
 			// 
@@ -563,6 +574,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		}
 #pragma endregion
 	private: System::Void skomsApp_Load(System::Object^ sender, System::EventArgs^ e) {
+		orderListView^ orderGui = orderListView::getOrderList();
+		orderGui->loadGUI(this->orderNum, this->dateTrans, this->totalCost, this->placeOrderButton);
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
@@ -577,6 +590,12 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Void click_item4(System::Object^ sender, System::EventArgs^ e) {
 		itemOnClick(this->orderList, itemName4, itemPrice4);
 	}
+	private: System::Void watcher_Tick(System::Object^ sender, System::EventArgs^ e) {
+		this->dateTrans->Text = System::DateTime::Now.ToString();
+	}
+	private: System::Void placeOrderButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		//place order
+	}
 };
 }
 
@@ -588,9 +607,10 @@ void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel, System
 	order^ itemDetail = gcnew order;
 	orderDetail^ orderDetails = orderDetail::getOrderDetails();
 	if (orderDetails->checkUniqueOrder(itemName->Text) == nullptr) {
-		itemDetail->addItem(itemDetail, orderListPanel, itemName->Text, itemPrice);
+		Label^ quantityLabel = gcnew Label();
+		itemDetail->addItem(itemDetail, orderListPanel, itemName->Text, itemPrice, quantityLabel);
 	}
 	else {
-		orderDetails->checkUniqueOrder(itemName->Text)->updateItem(orderListPanel);
+		orderDetails->checkUniqueOrder(itemName->Text)->updateItem();
 	}
 }

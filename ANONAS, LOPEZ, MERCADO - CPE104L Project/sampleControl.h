@@ -103,6 +103,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->downButton->Name = L"downButton";
 			this->downButton->Size = System::Drawing::Size(23, 23);
 			this->downButton->TabIndex = 5;
+			this->downButton->Tag = L"minus";
 			this->downButton->UseVisualStyleBackColor = false;
 			this->downButton->Click += gcnew System::EventHandler(this, &orderControl::downButton_Click);
 			// 

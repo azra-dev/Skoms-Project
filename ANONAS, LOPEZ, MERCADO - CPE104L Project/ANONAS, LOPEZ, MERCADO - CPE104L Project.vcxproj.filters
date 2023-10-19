@@ -66,7 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="order.resx">
-      <Filter>Header Files</Filter>
+      <Filter>Resource Files</Filter>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
