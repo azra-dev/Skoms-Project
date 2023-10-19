@@ -17,6 +17,7 @@ private:
 	String^ itemName;
 	int itemQuantity;
 	float itemPrice;
+	DateTime estimatedTime;
 public:
 	//Add the item into the order list. 
 	void addItem(order^ itemDetail, FlowLayoutPanel^ orderListPanel, String^ name, float price);
@@ -26,7 +27,6 @@ public:
 
 	//update the quantity of the item
 	void updateItem(FlowLayoutPanel^ orderListPanel);
-
 };
 
 
@@ -53,7 +53,6 @@ public:
 
 	//add an order object to the list
 	void addToOrderList(order^ itemDetail);
-
 };
 
 public ref class orderListView {
@@ -69,8 +68,9 @@ public:
 		return userOrderView;
 	}
 
+	//add panels into the order list
+	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(order::typeid));
 	void addOrderPanel(FlowLayoutPanel^ orderListPanel, String^ name, float price, NumericUpDown^ numericQuantity);
-
 };
 
 

@@ -27,6 +27,9 @@
     <ClCompile Include="orderViewImp.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="sampleControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="skomsApp.h">
@@ -38,5 +41,32 @@
     <ClInclude Include="order.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sampleControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ANONASLOPEZMERCADOCPE104LProject.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img\upbutton.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img\downbutton.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="order.resx">
+      <Filter>Header Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

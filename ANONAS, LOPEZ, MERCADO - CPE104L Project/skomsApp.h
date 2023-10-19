@@ -520,6 +520,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->itemPic4->TabIndex = 0;
 			this->itemPic4->TabStop = false;
+
+
+
 			// 
 			// skomsApp
 			// 
@@ -588,7 +591,6 @@ void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel, System
 		itemDetail->addItem(itemDetail, orderListPanel, itemName->Text, itemPrice);
 	}
 	else {
-		System::Diagnostics::Debug::WriteLine(orderDetails->checkUniqueOrder(itemName->Text)->getItemName());
 		orderDetails->checkUniqueOrder(itemName->Text)->updateItem(orderListPanel);
 	}
 }

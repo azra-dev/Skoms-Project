@@ -123,20 +123,37 @@
   <ItemGroup>
     <ClCompile Include="orderImp.cpp" />
     <ClCompile Include="orderViewImp.cpp" />
+    <ClCompile Include="sampleControl.cpp" />
     <ClCompile Include="skomFunctionsImp.cpp" />
     <ClCompile Include="skomsApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="order.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="sampleControl.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="skomFunctions.h" />
     <ClInclude Include="skomsApp.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="order.resx" />
+    <EmbeddedResource Include="sampleControl.resx">
+      <DependentUpon>sampleControl.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="skomsApp.resx">
       <DependentUpon>skomsApp.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ANONASLOPEZMERCADOCPE104LProject.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp" />
+    <Image Include="img\downbutton.png" />
+    <Image Include="img\upbutton.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,6 +14,7 @@ void order::addItem(order^ itemDetail, FlowLayoutPanel^ orderListPanel, String^ 
 	itemName = name;
 	itemQuantity = 1;
 	itemPrice = price;
+	estimatedTime = DateTime::Now.AddMinutes(15);
 	NumericUpDown^ numeric = gcnew NumericUpDown();
 	numericQuantity = numeric;
 
@@ -50,6 +51,7 @@ order^ orderDetail::checkUniqueOrder(String^ itemName) {
 	return nullptr;
 }
 
+//orderViewDetail -----------------------------------------------------------------------
 void orderDetail::addToOrderList(order^ itemDetail) {
 	List<order^>^ orderList = getOrderList();
 	orderList->Add(itemDetail);
