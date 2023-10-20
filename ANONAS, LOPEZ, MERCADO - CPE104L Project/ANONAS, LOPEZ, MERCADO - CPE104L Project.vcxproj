@@ -121,6 +121,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyUserControl.cpp" />
     <ClCompile Include="orderImp.cpp" />
     <ClCompile Include="orderViewImp.cpp" />
     <ClCompile Include="sampleControl.cpp" />
@@ -128,6 +129,9 @@
     <ClCompile Include="skomsAppCashier.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyUserControl.h">
+      <FileType>CppControl</FileType>
+    </ClInclude>
     <ClInclude Include="order.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sampleControl.h">
@@ -141,6 +145,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MyUserControl.resx">
+      <DependentUpon>MyUserControl.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="order.resx" />
     <EmbeddedResource Include="sampleControl.resx">
       <DependentUpon>sampleControl.h</DependentUpon>

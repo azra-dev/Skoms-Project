@@ -117,18 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuShadow.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAB4AAAAAeCAYAAADNaQN7AAAABGdBTUEAALGPC/xhBQAAAbFJREFUeF7t
-        2wdKRFEQRNE2ZwcDRkR0/4u0Gmz44Abe4DlwV1FUxVXapYf0nN7SR/pMX+lbkiRJkiRJkiRJkrRsvev2
-        vts7b12kGYHv02N6Si/pNfUg/C5JkiRJkiRJkiRJWq7ec3vX7X23d946TTMC36Qegu9Sj8H9Cu5BWJIk
-        SZIkSZIkSZK0Zr3r9r7bO2+dpB6Bz9MMwdepx+BbSZIkSZIkSZIkSdLy9b7bO28dpeM0Q/BZmjF4upQk
-        SZIkSZIkSZIkLdd21+2dtw5/myF4xuAZhCVJkiRJkiRJkiRJazcbbx1smjF4BmFJkiRJkiRJkiRJ0n7U
-        O+8f20FYkiRJkiRJkiRJkrQ/AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AMC/VPUDF+ZdWbr6syMAAAAASUVORK5CYII=
-</value>
-  </data>
 </root>
