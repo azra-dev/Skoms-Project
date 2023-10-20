@@ -118,8 +118,8 @@ void orderDetail::calculateTotal() {
 
 void orderDetail::placeOrder() {
 	getOrderNumber();
-	StreamWriter^ sw = gcnew StreamWriter("transaction" + DateTime::Today.ToString("d")->Replace("/", "-") + ".csv", true);
 
+	StreamWriter^ sw = gcnew StreamWriter("transaction" + DateTime::Today.ToString("d")->Replace("/", "-") + ".csv", true);
 	String^ itemList = ""; String^ quantityList = ""; int iter = 0; int quant = 0;
 	for each (order ^ order in customerOrderList) quant++;
 	for each (order ^ order in customerOrderList) {
@@ -136,7 +136,9 @@ void orderDetail::placeOrder() {
 	sw->WriteLine(orderNumber + "," + itemList + "," + quantityList + "," + totalCost + "," + transTime + "," + totalEstimatedTime + "," + totalOffsetTime + "," + orderStatus);
 	sw->Close();
 
-	
+	sw = gcnew StreamWriter("queue" + DateTime::Today.ToString("d")->Replace("/", "-") + ".csv", true);
+	sw->WriteLine(orderNumber + "," + transTime + "," + totalEstimatedTime + "," + totalOffsetTime + "," + orderStatus);
+	sw->Close();
 }
 
 //orderListView -----------------------------------------------------------------------
