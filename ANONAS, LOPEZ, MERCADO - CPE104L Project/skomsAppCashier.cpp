@@ -1,14 +1,10 @@
-#include "skomsApp.h"
-
-/*
+#include "skomsAppCashier.h"
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThreadAttribute]
 int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	ANONASLOPEZMERCADOCPE104LProject::skomsApp form;
+	ANONASLOPEZMERCADOCPE104LProject::skomsAppCashier form;
 	Application::Run(% form);
 }
-*/
-

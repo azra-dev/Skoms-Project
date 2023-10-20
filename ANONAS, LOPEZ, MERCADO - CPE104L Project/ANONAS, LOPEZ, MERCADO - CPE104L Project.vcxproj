@@ -124,8 +124,8 @@
     <ClCompile Include="orderImp.cpp" />
     <ClCompile Include="orderViewImp.cpp" />
     <ClCompile Include="sampleControl.cpp" />
-    <ClCompile Include="skomFunctionsImp.cpp" />
     <ClCompile Include="skomsApp.cpp" />
+    <ClCompile Include="skomsAppCashier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="order.h" />
@@ -133,8 +133,10 @@
     <ClInclude Include="sampleControl.h">
       <FileType>CppControl</FileType>
     </ClInclude>
-    <ClInclude Include="skomFunctions.h" />
     <ClInclude Include="skomsApp.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="skomsAppCashier.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -145,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="skomsApp.resx">
       <DependentUpon>skomsApp.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skomsAppCashier.resx">
+      <DependentUpon>skomsAppCashier.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

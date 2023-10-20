@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="skomFunctionsImp.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="skomsApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,12 +27,12 @@
     <ClCompile Include="sampleControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="skomsAppCashier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="skomsApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="skomFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="order.h">
@@ -45,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skomsAppCashier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
