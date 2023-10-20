@@ -11,7 +11,7 @@
 
 //customerView customer;
 
-void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice);
+void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice, int estTime);
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
 
@@ -577,23 +577,27 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 #pragma endregion
 	private: System::Void skomsApp_Load(System::Object^ sender, System::EventArgs^ e) {
 		orderListView^ orderGui = orderListView::getOrderList();
+		orderDetail^ orderDetails = orderDetail::getOrderDetails();
 		orderGui->loadGUI(this->orderNum, this->dateTrans, this->totalCost, this->placeOrderButton);
+		orderDetails->getOrderNumber();
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName1, itemPrice1);	
+		itemOnClick(this->orderList, itemName1, itemPrice1, 60);	
 	}
 	private: System::Void click_item2(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName2, itemPrice2);
+		itemOnClick(this->orderList, itemName2, itemPrice2, 90);
 	}
 	private: System::Void click_item3(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName3, itemPrice3);
+		itemOnClick(this->orderList, itemName3, itemPrice3, 120);
 	}
 	private: System::Void click_item4(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName4, itemPrice4);
+		itemOnClick(this->orderList, itemName4, itemPrice4, 200);
 	}
 	private: System::Void watcher_Tick(System::Object^ sender, System::EventArgs^ e) {
+		orderDetail^ orderDetails = orderDetail::getOrderDetails();
 		this->dateTrans->Text = System::DateTime::Now.ToString();
+		orderDetails->setDateTime(System::DateTime::Now);
 	}
 	private: System::Void placeOrderButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ input = enterCash->Text;
@@ -608,20 +612,20 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			MessageBox::Show("The input " + input + " is insufficient. Please try again.", "Error: Insufficient Amount.", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else {
-			orderDetail^ detail = orderDetail::getOrderDetails();
-			detail->placeOrder(cash);
 			if (MessageBox::Show("Cofirm order?", "Finalization", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
-				System::Diagnostics::Debug::WriteLine("Done!");
+				orderDetail^ orderDetails = orderDetail::getOrderDetails();
+				orderDetails->placeOrder();
 			}
 		}
 	}
 	private: System::Void enterCash_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		
+		orderListView^ orderGui = orderListView::getOrderList();
+		orderGui->updateCash(this->enterCash->Text);
 	}
 };
 }
 
-void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel, System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPriceX) {
+void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel, System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPriceX, int estTime) {
 	msclr::interop::marshal_context context;
 	std::string itemPriceStr = context.marshal_as<std::string>(itemPriceX->Text);
 	float itemPrice = stoi(itemPriceStr.substr(1, itemPriceStr.length() - 1));
@@ -630,7 +634,7 @@ void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel, System
 	orderDetail^ orderDetails = orderDetail::getOrderDetails();
 	if (orderDetails->checkUniqueOrder(itemName->Text) == nullptr) {
 		Label^ quantityLabel = gcnew Label();
-		itemDetail->addItem(itemDetail, orderListPanel, itemName->Text, itemPrice, quantityLabel);
+		itemDetail->addItem(itemDetail, orderListPanel, itemName->Text, itemPrice, quantityLabel, estTime);
 	}
 	else {
 		orderDetails->checkUniqueOrder(itemName->Text)->updateItem();

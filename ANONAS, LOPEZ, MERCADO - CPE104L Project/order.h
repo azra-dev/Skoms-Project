@@ -13,21 +13,22 @@ using namespace System::Collections::Generic;
 
 public ref class order {
 private:
-	//NumericUpDown^ numericQuantity;
 	String^ itemName;
 	int itemQuantity;
-	Label^ quantityLabel;
 	float itemPrice;
-	DateTime estimatedTime;
+	int estimatedTime; //in seconds
+
 	Panel^ itemPanel;
+	Label^ quantityLabel;
 public:
 	//Add the item into the order list. 
-	void addItem(order^ itemDetail, FlowLayoutPanel^ orderListPanel, String^ name, float price, Label^ quantityLabel);
+	void addItem(order^ itemDetail, FlowLayoutPanel^ orderListPanel, String^ name, float price, Label^ quantityLabel, int estTime);
 
 	//Get the item from the order list.
 	String^ getItemName() { return itemName; }
 	int getItemQuantity() { return itemQuantity; }
 	float getItemPrice() { return itemPrice; }
+	int getEstimatedTime() { return estimatedTime; }
 
 	//update the quantity of the item through panels
 	void updateItem();
@@ -40,10 +41,15 @@ public:
 public ref class orderDetail {
 private:
 	static orderDetail^ userOrder = nullptr;
+
+	int orderNumber;
 	List<order^>^ customerOrderList;
 	float totalCost = 0;
 	float totalTender = 0;
+	int totalEstimatedTime = 0;
+	int totalOffsetTime = 0;
 	System::DateTime transTime;
+	String^ orderStatus;
 public:
 	//intitialize once if an order detail object does not exists
 	static orderDetail^ getOrderDetails() {
@@ -52,6 +58,9 @@ public:
 		}
 		return userOrder;
 	}
+
+	//get order number for the customer
+	void getOrderNumber();
 
 	//initialize once if an order list does not exists
 	List<order^>^ getOrderList();
@@ -68,8 +77,11 @@ public:
 	//calculate the total cost
 	void calculateTotal();
 
+	//set dateTime
+	void setDateTime(DateTime t) { transTime = t; }
+
 	//finalize placing the order
-	void placeOrder(float tender);
+	void placeOrder();
 };
 
 public ref class orderListView {
@@ -81,6 +93,7 @@ private:
 	Label^ orderNum;
 	Label^ dateTrans;
 	Label^ totalCost;
+	String^ inputCash = nullptr;
 	Button^ placeOrderButton;
 public:
 	//intitialize once if an order list view does not exists for GUI side
@@ -99,6 +112,8 @@ public:
 		placeOrderButton = z;
 	}
 
+	void updateCash(String^ c);
+
 	//add panels into the order list
 	void addOrderPanel(FlowLayoutPanel^ orderListPanel, String^ name, float price, Label^ quantityLabel, Panel^ panel);
 
@@ -107,6 +122,9 @@ public:
 
 	//update the totalCost label in GUI
 	void updateTotalLabel(float cost);
+
+	//update the order number in GUI
+	void updateLabelId(int id);
 };
 
 
