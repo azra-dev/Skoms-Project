@@ -84,6 +84,15 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ costLabel;
 	private: System::Windows::Forms::Label^ orderNum;
 	private: System::Windows::Forms::Timer^ watcher;
+	private: System::Windows::Forms::Panel^ item5;
+
+	private: System::Windows::Forms::Label^ itemPrice5;
+	private: System::Windows::Forms::Label^ itemName5;
+
+
+
+
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -138,6 +147,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPrice4 = (gcnew System::Windows::Forms::Label());
 			this->itemName4 = (gcnew System::Windows::Forms::Label());
 			this->itemPic4 = (gcnew System::Windows::Forms::PictureBox());
+			this->item5 = (gcnew System::Windows::Forms::Panel());
+			this->itemPrice5 = (gcnew System::Windows::Forms::Label());
+			this->itemName5 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->watcher = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
@@ -151,6 +164,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemPic3))->BeginInit();
 			this->item4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemPic4))->BeginInit();
+			this->item5->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuBox
@@ -334,6 +349,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->menuLayout->Controls->Add(this->item2);
 			this->menuLayout->Controls->Add(this->item3);
 			this->menuLayout->Controls->Add(this->item4);
+			this->menuLayout->Controls->Add(this->item5);
 			this->menuLayout->Location = System::Drawing::Point(29, 123);
 			this->menuLayout->Name = L"menuLayout";
 			this->menuLayout->Size = System::Drawing::Size(719, 466);
@@ -356,13 +372,13 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// itemName1
 			// 
 			this->itemName1->AutoSize = true;
-			this->itemName1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->itemName1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemName1->Location = System::Drawing::Point(55, 146);
+			this->itemName1->Location = System::Drawing::Point(14, 150);
 			this->itemName1->Name = L"itemName1";
-			this->itemName1->Size = System::Drawing::Size(53, 17);
+			this->itemName1->Size = System::Drawing::Size(134, 13);
 			this->itemName1->TabIndex = 1;
-			this->itemName1->Text = L"Banana";
+			this->itemName1->Text = L"Choco Banana Peanut Butter";
 			this->itemName1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemPic1
@@ -380,11 +396,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPrice1->AutoSize = true;
 			this->itemPrice1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemPrice1->Location = System::Drawing::Point(57, 163);
+			this->itemPrice1->Location = System::Drawing::Point(60, 163);
 			this->itemPrice1->Name = L"itemPrice1";
-			this->itemPrice1->Size = System::Drawing::Size(40, 18);
+			this->itemPrice1->Size = System::Drawing::Size(32, 18);
 			this->itemPrice1->TabIndex = 2;
-			this->itemPrice1->Text = L"P150";
+			this->itemPrice1->Text = L"P90";
 			this->itemPrice1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// item2
@@ -406,11 +422,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPrice2->AutoSize = true;
 			this->itemPrice2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemPrice2->Location = System::Drawing::Point(60, 163);
+			this->itemPrice2->Location = System::Drawing::Point(65, 163);
 			this->itemPrice2->Name = L"itemPrice2";
-			this->itemPrice2->Size = System::Drawing::Size(40, 18);
+			this->itemPrice2->Size = System::Drawing::Size(32, 18);
 			this->itemPrice2->TabIndex = 2;
-			this->itemPrice2->Text = L"P250";
+			this->itemPrice2->Text = L"P85";
 			this->itemPrice2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemName2
@@ -420,9 +436,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 				static_cast<System::Byte>(0)));
 			this->itemName2->Location = System::Drawing::Point(56, 146);
 			this->itemName2->Name = L"itemName2";
-			this->itemName2->Size = System::Drawing::Size(48, 17);
+			this->itemName2->Size = System::Drawing::Size(51, 17);
 			this->itemName2->TabIndex = 1;
-			this->itemName2->Text = L"Waffle";
+			this->itemName2->Text = L"Smores";
 			this->itemName2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemPic2
@@ -431,7 +447,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic2->Location = System::Drawing::Point(0, 0);
 			this->itemPic2->Name = L"itemPic2";
 			this->itemPic2->Size = System::Drawing::Size(160, 130);
-			this->itemPic2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->itemPic2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic2->TabIndex = 0;
 			this->itemPic2->TabStop = false;
 			// 
@@ -456,9 +472,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 				static_cast<System::Byte>(0)));
 			this->itemPrice3->Location = System::Drawing::Point(60, 163);
 			this->itemPrice3->Name = L"itemPrice3";
-			this->itemPrice3->Size = System::Drawing::Size(40, 18);
+			this->itemPrice3->Size = System::Drawing::Size(32, 18);
 			this->itemPrice3->TabIndex = 2;
-			this->itemPrice3->Text = L"P300";
+			this->itemPrice3->Text = L"P70";
 			this->itemPrice3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemName3
@@ -466,11 +482,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemName3->AutoSize = true;
 			this->itemName3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemName3->Location = System::Drawing::Point(44, 146);
+			this->itemName3->Location = System::Drawing::Point(17, 146);
 			this->itemName3->Name = L"itemName3";
-			this->itemName3->Size = System::Drawing::Size(70, 17);
+			this->itemName3->Size = System::Drawing::Size(124, 17);
 			this->itemName3->TabIndex = 1;
-			this->itemName3->Text = L"Ice Cream";
+			this->itemName3->Text = L"Cookies and Cream";
 			this->itemName3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemPic3
@@ -502,11 +518,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPrice4->AutoSize = true;
 			this->itemPrice4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemPrice4->Location = System::Drawing::Point(60, 163);
+			this->itemPrice4->Location = System::Drawing::Point(65, 163);
 			this->itemPrice4->Name = L"itemPrice4";
-			this->itemPrice4->Size = System::Drawing::Size(40, 18);
+			this->itemPrice4->Size = System::Drawing::Size(32, 18);
 			this->itemPrice4->TabIndex = 2;
-			this->itemPrice4->Text = L"P500";
+			this->itemPrice4->Text = L"P75";
 			this->itemPrice4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemName4
@@ -514,11 +530,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemName4->AutoSize = true;
 			this->itemName4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->itemName4->Location = System::Drawing::Point(38, 146);
+			this->itemName4->Location = System::Drawing::Point(3, 146);
 			this->itemName4->Name = L"itemName4";
-			this->itemName4->Size = System::Drawing::Size(89, 17);
+			this->itemName4->Size = System::Drawing::Size(154, 17);
 			this->itemName4->TabIndex = 1;
-			this->itemName4->Text = L"Peanut Butter";
+			this->itemName4->Text = L"Blueberry Cream Cheese";
 			this->itemName4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// itemPic4
@@ -527,9 +543,57 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic4->Location = System::Drawing::Point(0, 0);
 			this->itemPic4->Name = L"itemPic4";
 			this->itemPic4->Size = System::Drawing::Size(160, 130);
-			this->itemPic4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->itemPic4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic4->TabIndex = 0;
 			this->itemPic4->TabStop = false;
+			// 
+			// item5
+			// 
+			this->item5->BackColor = System::Drawing::Color::White;
+			this->item5->Controls->Add(this->itemPrice5);
+			this->item5->Controls->Add(this->itemName5);
+			this->item5->Controls->Add(this->pictureBox1);
+			this->item5->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->item5->Location = System::Drawing::Point(5, 215);
+			this->item5->Margin = System::Windows::Forms::Padding(5);
+			this->item5->Name = L"item5";
+			this->item5->Size = System::Drawing::Size(160, 200);
+			this->item5->TabIndex = 6;
+			this->item5->Click += gcnew System::EventHandler(this, &skomsApp::click_item5);
+			// 
+			// itemPrice5
+			// 
+			this->itemPrice5->AutoSize = true;
+			this->itemPrice5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->itemPrice5->Location = System::Drawing::Point(60, 163);
+			this->itemPrice5->Name = L"itemPrice5";
+			this->itemPrice5->Size = System::Drawing::Size(32, 18);
+			this->itemPrice5->TabIndex = 2;
+			this->itemPrice5->Text = L"P60";
+			this->itemPrice5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// itemName5
+			// 
+			this->itemName5->AutoSize = true;
+			this->itemName5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->itemName5->Location = System::Drawing::Point(21, 147);
+			this->itemName5->Name = L"itemName5";
+			this->itemName5->Size = System::Drawing::Size(127, 17);
+			this->itemName5->TabIndex = 1;
+			this->itemName5->Text = L"french butter maple";
+			this->itemName5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(0, 0);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(160, 130);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
 			// 
 			// watcher
 			// 
@@ -570,6 +634,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->item4->ResumeLayout(false);
 			this->item4->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itemPic4))->EndInit();
+			this->item5->ResumeLayout(false);
+			this->item5->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -594,6 +661,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Void click_item4(System::Object^ sender, System::EventArgs^ e) {
 		itemOnClick(this->orderList, itemName4, itemPrice4, 200);
 	}
+	private: System::Void click_item5(System::Object^ sender, System::EventArgs^ e) {
+		itemOnClick(this->orderList, itemName5, itemPrice5, 200);
+	}
+
 	private: System::Void watcher_Tick(System::Object^ sender, System::EventArgs^ e) {
 		orderDetail^ orderDetails = orderDetail::getOrderDetails();
 		this->dateTrans->Text = System::DateTime::Now.ToString();

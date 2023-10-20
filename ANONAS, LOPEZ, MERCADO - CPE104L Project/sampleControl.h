@@ -90,9 +90,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 				static_cast<System::Byte>(0)));
 			this->orderText1->Location = System::Drawing::Point(12, 17);
 			this->orderText1->Name = L"orderText1";
-			this->orderText1->Size = System::Drawing::Size(110, 17);
+			this->orderText1->Size = System::Drawing::Size(180, 17);
 			this->orderText1->TabIndex = 3;
-			this->orderText1->Text = L"Placeholder Item";
+			this->orderText1->Text = L"Choco Banana Peanut Butter";
 			// 
 			// downButton
 			// 
