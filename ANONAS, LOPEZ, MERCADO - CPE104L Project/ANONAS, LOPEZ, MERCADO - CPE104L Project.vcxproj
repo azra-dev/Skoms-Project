@@ -124,6 +124,8 @@
     <ClCompile Include="MyUserControl.cpp" />
     <ClCompile Include="orderImp.cpp" />
     <ClCompile Include="orderViewImp.cpp" />
+    <ClCompile Include="queueImp.cpp" />
+    <ClCompile Include="queueViewImp.cpp" />
     <ClCompile Include="sampleControl.cpp" />
     <ClCompile Include="skomsApp.cpp" />
     <ClCompile Include="skomsAppCashier.cpp" />
@@ -133,6 +135,7 @@
       <FileType>CppControl</FileType>
     </ClInclude>
     <ClInclude Include="order.h" />
+    <ClInclude Include="queue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sampleControl.h">
       <FileType>CppControl</FileType>

@@ -1,4 +1,6 @@
 #pragma once
+#include "queue.h"
+
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
 
@@ -42,13 +44,21 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ header_TransTime;
 	private: System::Windows::Forms::Label^ header_EstTime;
 	private: System::Windows::Forms::Label^ header_Status;
-	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
-	private: System::Windows::Forms::Panel^ queue1;
-	private: System::Windows::Forms::Label^ id1;
-	private: System::Windows::Forms::Label^ transTime1;
-	private: System::Windows::Forms::Button^ buttonCancel1;
-	private: System::Windows::Forms::Button^ buttonClaim1;
-	private: System::Windows::Forms::Label^ estTime1;
+	private: System::Windows::Forms::FlowLayoutPanel^ queueFlowlist;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,18 +90,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->header_EstTime = (gcnew System::Windows::Forms::Label());
 			this->header_TransTime = (gcnew System::Windows::Forms::Label());
 			this->header_OrderNumber = (gcnew System::Windows::Forms::Label());
-			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->queue1 = (gcnew System::Windows::Forms::Panel());
-			this->id1 = (gcnew System::Windows::Forms::Label());
-			this->transTime1 = (gcnew System::Windows::Forms::Label());
-			this->estTime1 = (gcnew System::Windows::Forms::Label());
-			this->buttonClaim1 = (gcnew System::Windows::Forms::Button());
-			this->buttonCancel1 = (gcnew System::Windows::Forms::Button());
+			this->queueFlowlist = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->headPanel->SuspendLayout();
-			this->flowLayoutPanel1->SuspendLayout();
-			this->queue1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuBox
@@ -160,7 +162,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->header_EstTime->BackColor = System::Drawing::SystemColors::Control;
 			this->header_EstTime->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->header_EstTime->Location = System::Drawing::Point(395, 10);
+			this->header_EstTime->Location = System::Drawing::Point(432, 10);
 			this->header_EstTime->Name = L"header_EstTime";
 			this->header_EstTime->Size = System::Drawing::Size(190, 21);
 			this->header_EstTime->TabIndex = 7;
@@ -190,88 +192,12 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->header_OrderNumber->TabIndex = 5;
 			this->header_OrderNumber->Text = L"Order Number";
 			// 
-			// flowLayoutPanel1
+			// queueFlowlist
 			// 
-			this->flowLayoutPanel1->Controls->Add(this->queue1);
-			this->flowLayoutPanel1->Location = System::Drawing::Point(59, 134);
-			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(1018, 437);
-			this->flowLayoutPanel1->TabIndex = 5;
-			// 
-			// queue1
-			// 
-			this->queue1->BackColor = System::Drawing::SystemColors::Control;
-			this->queue1->Controls->Add(this->buttonCancel1);
-			this->queue1->Controls->Add(this->buttonClaim1);
-			this->queue1->Controls->Add(this->estTime1);
-			this->queue1->Controls->Add(this->transTime1);
-			this->queue1->Controls->Add(this->id1);
-			this->queue1->Location = System::Drawing::Point(3, 3);
-			this->queue1->Name = L"queue1";
-			this->queue1->Size = System::Drawing::Size(1015, 45);
-			this->queue1->TabIndex = 0;
-			// 
-			// id1
-			// 
-			this->id1->AutoSize = true;
-			this->id1->BackColor = System::Drawing::SystemColors::Control;
-			this->id1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->id1->Location = System::Drawing::Point(17, 13);
-			this->id1->Name = L"id1";
-			this->id1->Size = System::Drawing::Size(46, 21);
-			this->id1->TabIndex = 9;
-			this->id1->Text = L"0001";
-			// 
-			// transTime1
-			// 
-			this->transTime1->AutoSize = true;
-			this->transTime1->BackColor = System::Drawing::SystemColors::Control;
-			this->transTime1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->transTime1->Location = System::Drawing::Point(205, 13);
-			this->transTime1->Name = L"transTime1";
-			this->transTime1->Size = System::Drawing::Size(58, 19);
-			this->transTime1->TabIndex = 10;
-			this->transTime1->Text = L"aa:bb";
-			// 
-			// estTime1
-			// 
-			this->estTime1->AutoSize = true;
-			this->estTime1->BackColor = System::Drawing::SystemColors::Control;
-			this->estTime1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->estTime1->Location = System::Drawing::Point(393, 13);
-			this->estTime1->Name = L"estTime1";
-			this->estTime1->Size = System::Drawing::Size(58, 19);
-			this->estTime1->TabIndex = 11;
-			this->estTime1->Text = L"aa:bb";
-			// 
-			// buttonClaim1
-			// 
-			this->buttonClaim1->BackColor = System::Drawing::Color::Crimson;
-			this->buttonClaim1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->buttonClaim1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->buttonClaim1->ForeColor = System::Drawing::Color::White;
-			this->buttonClaim1->Location = System::Drawing::Point(820, 8);
-			this->buttonClaim1->Name = L"buttonClaim1";
-			this->buttonClaim1->Size = System::Drawing::Size(84, 26);
-			this->buttonClaim1->TabIndex = 12;
-			this->buttonClaim1->Text = L"Claim";
-			this->buttonClaim1->UseVisualStyleBackColor = false;
-			// 
-			// buttonCancel1
-			// 
-			this->buttonCancel1->BackColor = System::Drawing::Color::HotPink;
-			this->buttonCancel1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->buttonCancel1->ForeColor = System::Drawing::Color::White;
-			this->buttonCancel1->Location = System::Drawing::Point(910, 8);
-			this->buttonCancel1->Name = L"buttonCancel1";
-			this->buttonCancel1->Size = System::Drawing::Size(84, 26);
-			this->buttonCancel1->TabIndex = 13;
-			this->buttonCancel1->Text = L"Cancel";
-			this->buttonCancel1->UseVisualStyleBackColor = false;
+			this->queueFlowlist->Location = System::Drawing::Point(59, 134);
+			this->queueFlowlist->Name = L"queueFlowlist";
+			this->queueFlowlist->Size = System::Drawing::Size(1018, 437);
+			this->queueFlowlist->TabIndex = 5;
 			// 
 			// skomsAppCashier
 			// 
@@ -280,7 +206,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(1136, 609);
 			this->Controls->Add(this->headPanel);
-			this->Controls->Add(this->flowLayoutPanel1);
+			this->Controls->Add(this->queueFlowlist);
 			this->Controls->Add(this->menuShadow);
 			this->Controls->Add(this->menuLabel);
 			this->Controls->Add(this->menuBox);
@@ -289,17 +215,22 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->MinimumSize = System::Drawing::Size(1152, 648);
 			this->Name = L"skomsAppCashier";
 			this->Text = L"skomsAppCashier";
+			this->Load += gcnew System::EventHandler(this, &skomsAppCashier::skomsAppCashier_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->EndInit();
 			this->headPanel->ResumeLayout(false);
 			this->headPanel->PerformLayout();
-			this->flowLayoutPanel1->ResumeLayout(false);
-			this->queue1->ResumeLayout(false);
-			this->queue1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void skomsAppCashier_Load(System::Object^ sender, System::EventArgs^ e) {
+		queueListView^ qView = queueListView::getOrderListView();
+		qView->loadGUI(this->queueFlowlist);
+
+		queueList^ q = queueList::getOrderList();
+		q->readQueue();
+	}
+};
 }
