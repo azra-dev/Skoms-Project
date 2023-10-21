@@ -16,7 +16,9 @@ private:
 	DateTime servingTime;
 	int offsetTime;
 	String^ status;
+	bool availability = false;
 	Panel^ queuePanel;
+	Button^ buttonClaim;
 public:
 	//get queue properties
 	int getOrderNumber() { return orderNumber; }
@@ -25,6 +27,7 @@ public:
 	int getOffsetTime() { return offsetTime; }
 	String^ getStatus() { return status; }
 	Panel^ getQueuePanel() { return queuePanel; }
+	Button^ getButtonClaim() { return buttonClaim; }
 
 	//set queues properties
 	void setOrderNumber(int v) { orderNumber = v; }
@@ -33,9 +36,13 @@ public:
 	void setOffsetTime(int v) { offsetTime = v; }
 	void setStatus(String^ v) { status = v; }
 	void setQueuePanel(Panel^ v) { queuePanel = v; }
+	void setButtonClaim(Button^ v) { buttonClaim = v; }
 
 	//set status as claimed or cancelled
 	void removeOrder(String^ s);
+
+	//update the availability of the order;
+	void updateAvailability(bool b);
 };
 
 public ref class queueList {
@@ -87,10 +94,12 @@ public:
 	void loadGUI(FlowLayoutPanel^ layout) { queueFlowlist = layout; }
 
 	//insert every panels to the GUI
-	void addQueue(int orderNumber, DateTime transTime, DateTime servingTime, Panel^ queuePanel);
+	void addQueue(int orderNumber, DateTime transTime, DateTime servingTime, Panel^ queuePanel, Button^ buttonClaimed);
 
 	//clear all panels to the QUI
 	void clearQueue();
+
+	void watcherTick();
 };
 
 

@@ -18,6 +18,20 @@ void queue::removeOrder(String^ s) {
 	delete this;
 }
 
+void queue::updateAvailability(bool b) {
+	availability = b;
+	if (availability) {
+		buttonClaim->BackColor = System::Drawing::Color::Crimson;
+		buttonClaim->Cursor = System::Windows::Forms::Cursors::Hand;
+		buttonClaim->Enabled = true;
+	}
+	else {
+		buttonClaim->BackColor = System::Drawing::Color::Gray;
+		buttonClaim->Cursor = System::Windows::Forms::Cursors::No;
+		buttonClaim->Enabled = false;
+	}
+}
+
 //queueList -----------------------------------------------------------------------
 List<queue^>^ queueList::getOrderQueueList() {
 	if (orderQueueList == nullptr) {
@@ -79,8 +93,10 @@ void queueList::addToQueueList(queue^ queueObj) {
 	getOrderQueueList()->Add(queueObj);
 	queueListView^ qView = queueListView::getOrderListView();
 	Panel^ queuePanel = gcnew Panel();
+	Button^ buttonC = gcnew Button();
 	queueObj->setQueuePanel(queuePanel);
-	qView->addQueue(queueObj->getOrderNumber(), queueObj->getTransTime(), queueObj->getServingTime(), queueObj->getQueuePanel());
+	queueObj->setButtonClaim(buttonC);
+	qView->addQueue(queueObj->getOrderNumber(), queueObj->getTransTime(), queueObj->getServingTime(), queueObj->getQueuePanel(), queueObj->getButtonClaim());
 }
 
 void queueList::removeToQueueList(queue^ queueObj) {
@@ -139,4 +155,12 @@ System::Void queueListView::updateStatus(System::Object^ sender, System::EventAr
 	}
 }
 
+void queueListView::watcherTick() {
+	queueList^ qList = queueList::getOrderList();
+	for each (queue ^ q in qList->getOrderQueueList()) {
+		if (q->getServingTime() <= DateTime::Now) {
+			q->updateAvailability(true);
+		}
+	}
+}
 

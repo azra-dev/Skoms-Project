@@ -8,7 +8,7 @@ using namespace System::Windows::Forms;
 using namespace System::Collections::Generic;
 using namespace System::IO;
 
-void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime servingTime, Panel^ queuePanel) {
+void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime servingTime, Panel^ queuePanel, Button^ buttonClaim) {
 	noOfPanels++;
 	queueFlowlist->Controls->Add(queuePanel);
 	// 
@@ -38,10 +38,10 @@ void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime
 	// 
 	// buttonClaim1
 	// 
-	Button^ buttonClaim = gcnew Button();
 	queuePanel->Controls->Add(buttonClaim);
-	buttonClaim->BackColor = System::Drawing::Color::Crimson;
-	buttonClaim->Cursor = System::Windows::Forms::Cursors::Hand;
+	buttonClaim->BackColor = System::Drawing::Color::Gray;
+	buttonClaim->Cursor = System::Windows::Forms::Cursors::No;
+	buttonClaim->Enabled = false;
 	buttonClaim->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 		static_cast<System::Byte>(0)));
 	buttonClaim->ForeColor = System::Drawing::Color::White;

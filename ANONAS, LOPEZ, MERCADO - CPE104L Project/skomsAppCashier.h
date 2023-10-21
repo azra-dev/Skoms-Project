@@ -45,6 +45,8 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ header_EstTime;
 	private: System::Windows::Forms::Label^ header_Status;
 	private: System::Windows::Forms::FlowLayoutPanel^ queueFlowlist;
+	private: System::Windows::Forms::Timer^ watcher;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -72,7 +74,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -81,6 +83,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(skomsAppCashier::typeid));
 			this->menuBox = (gcnew System::Windows::Forms::PictureBox());
 			this->menuLabel = (gcnew System::Windows::Forms::Label());
@@ -91,6 +94,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->header_TransTime = (gcnew System::Windows::Forms::Label());
 			this->header_OrderNumber = (gcnew System::Windows::Forms::Label());
 			this->queueFlowlist = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->watcher = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->headPanel->SuspendLayout();
@@ -199,6 +203,12 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->queueFlowlist->Size = System::Drawing::Size(1018, 437);
 			this->queueFlowlist->TabIndex = 5;
 			// 
+			// watcher
+			// 
+			this->watcher->Enabled = true;
+			this->watcher->Interval = 1000;
+			this->watcher->Tick += gcnew System::EventHandler(this, &skomsAppCashier::watcher_Tick);
+			// 
 			// skomsAppCashier
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -231,6 +241,10 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 
 		queueList^ q = queueList::getOrderList();
 		q->readQueue();
+	}
+	private: System::Void watcher_Tick(System::Object^ sender, System::EventArgs^ e) {
+		queueListView^ qView = queueListView::getOrderListView();
+		qView->watcherTick();
 	}
 };
 }

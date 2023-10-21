@@ -76,8 +76,9 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// 
 			// buttonClaim1
 			// 
-			this->buttonClaim1->BackColor = System::Drawing::Color::Crimson;
-			this->buttonClaim1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->buttonClaim1->BackColor = System::Drawing::Color::Gray;
+			this->buttonClaim1->Cursor = System::Windows::Forms::Cursors::No;
+			this->buttonClaim1->Enabled = false;
 			this->buttonClaim1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->buttonClaim1->ForeColor = System::Drawing::Color::White;
