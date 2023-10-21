@@ -10,8 +10,13 @@ using namespace System::Collections::Generic;
 using namespace System::IO;
 
 //queue ---------------------------------------------------------------------------
-
-
+void queue::removeOrder(String^ s) {
+	setStatus(s);
+	queueList^ qList = queueList::getOrderList();
+	qList->removeToQueueList(this);
+	qList->readQueue();
+	delete this;
+}
 
 //queueList -----------------------------------------------------------------------
 List<queue^>^ queueList::getOrderQueueList() {
@@ -23,9 +28,12 @@ List<queue^>^ queueList::getOrderQueueList() {
 
 void queueList::readQueue() {
 	if (File::Exists("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv")) {
+		queueListView^ qListView = queueListView::getOrderListView();
+		qListView->clearQueue();
+		refactorQueue();
 		StreamReader^ sr = File::OpenText("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 		String^ line;
-		while ((line = sr->ReadLine()) != nullptr) {
+		while ((line = sr->ReadLine()) != nullptr && !String::IsNullOrWhiteSpace(line)) {
 			
 			queue^ queueObj = gcnew queue;
 			array<String^>^ args = line->Split(',');
@@ -43,6 +51,30 @@ void queueList::readQueue() {
 	}
 }
 
+void queueList::refactorQueue() {
+	StreamReader^ sr = File::OpenText("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	List<String^>^ data = gcnew List<String^>;
+	String^ line;
+
+	int counter = 0;
+	while ((line = sr->ReadLine()) != nullptr) {
+		counter++;
+		if (!String::IsNullOrWhiteSpace(line))
+			data->Add(line);
+	}
+	sr->Close();
+
+	if (counter != data->Count) {
+		File::Delete("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+		StreamWriter^ sw = gcnew StreamWriter("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+		for each (String ^ d in data) {
+			sw->WriteLine(d);
+		}
+		sw->Close();
+	}
+}
+
+
 void queueList::addToQueueList(queue^ queueObj) {
 	getOrderQueueList()->Add(queueObj);
 	queueListView^ qView = queueListView::getOrderListView();
@@ -51,7 +83,60 @@ void queueList::addToQueueList(queue^ queueObj) {
 	qView->addQueue(queueObj->getOrderNumber(), queueObj->getTransTime(), queueObj->getServingTime(), queueObj->getQueuePanel());
 }
 
-//queueListView -------------------------------------------------------------------
+void queueList::removeToQueueList(queue^ queueObj) {
+	getOrderQueueList()->Remove(queueObj);
+	StreamReader^ sr = File::OpenText("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	List<String^>^ data = gcnew List<String^>;
+	String^ line;
 
+	//store excluded queue data
+	while ((line = sr->ReadLine()) != nullptr) {
+		array<String^>^ args = line->Split(',');
+		if (args[0] != Convert::ToString(queueObj->getOrderNumber())) 
+			data->Add(line);
+	}
+	sr->Close();
+
+	//insert new data in queue
+	File::Delete("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	StreamWriter^ sw = gcnew StreamWriter("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	for each (String ^ d in data) {
+		sw->WriteLine(d);
+	}
+	sw->Close();
+
+	//store excluded transaction data
+	data->Clear();
+	sr = File::OpenText("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	while ((line = sr->ReadLine()) != nullptr) {
+		array<String^>^ args = line->Split(',');
+		if (args[0] != Convert::ToString(queueObj->getOrderNumber()))
+			data->Add(line);
+		else
+			data->Add(args[0] + "," + args[1] + "," + args[2] + "," + args[3] + "," + args[4] + "," + args[5] + "," + args[6] + "," + queueObj->getStatus());
+	}
+	sr->Close();
+
+	//insert new data in transaction
+	File::Delete("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	sw = gcnew StreamWriter("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	for each (String ^ d in data) {
+		sw->WriteLine(d);
+	}
+	sw->Close();
+}
+
+//queueListView -------------------------------------------------------------------
+System::Void queueListView::updateStatus(System::Object^ sender, System::EventArgs^ e) {
+	Button^ button = (Button^)sender;
+	queueList^ qList = queueList::getOrderList();
+	array<String^>^ data = (button->Tag)->ToString()->Split('|');
+	for each (queue ^ q in qList->getOrderQueueList()) {
+		if (q->getOrderNumber() == Convert::ToInt32(data[1])) {
+			q->removeOrder(data[0]);
+			break;
+		}
+	}
+}
 
 

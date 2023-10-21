@@ -34,11 +34,8 @@ public:
 	void setStatus(String^ v) { status = v; }
 	void setQueuePanel(Panel^ v) { queuePanel = v; }
 
-	//set status as claimed
-	//void claimOrder();
-
-	//set status as cancelled
-	//void cancelOrder();
+	//set status as claimed or cancelled
+	void removeOrder(String^ s);
 };
 
 public ref class queueList {
@@ -60,16 +57,23 @@ public:
 	//read the Queue[DateTime].csv
 	void readQueue();
 
+	//reorganize .csv file
+	void refactorQueue();
+
 	//store the queue object instance to orderList
 	void addToQueueList(queue^ queue);
+
+	//remove the queue object instance to orderList
+	void removeToQueueList(queue^ queueObj);
 
 };
 
 public ref class queueListView {
 private:
+	System::Void updateStatus(System::Object^ sender, System::EventArgs^ e);
 	static queueListView^ orderListView = nullptr;
 	int noOfPanels = 0;
-	FlowLayoutPanel^ queueList;
+	FlowLayoutPanel^ queueFlowlist;
 public:
 	//initialize object instance once
 	static queueListView^ getOrderListView() {
@@ -80,13 +84,13 @@ public:
 	}
 
 	//load GUI
-	void loadGUI(FlowLayoutPanel^ layout) { queueList = layout; }
+	void loadGUI(FlowLayoutPanel^ layout) { queueFlowlist = layout; }
 
 	//insert every panels to the GUI
 	void addQueue(int orderNumber, DateTime transTime, DateTime servingTime, Panel^ queuePanel);
 
 	//clear all panels to the QUI
-	//void clearQueue();
+	void clearQueue();
 };
 
 

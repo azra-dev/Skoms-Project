@@ -10,7 +10,7 @@ using namespace System::IO;
 
 void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime servingTime, Panel^ queuePanel) {
 	noOfPanels++;
-	queueList->Controls->Add(queuePanel);
+	queueFlowlist->Controls->Add(queuePanel);
 	// 
 	// queue1
 	// 
@@ -33,6 +33,8 @@ void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime
 	buttonCancel->TabIndex = 18;
 	buttonCancel->Text = L"Cancel";
 	buttonCancel->UseVisualStyleBackColor = false;
+	buttonCancel->Tag = L"cancel" + "|" + orderNumber;
+	buttonCancel->Click += gcnew System::EventHandler(this, &queueListView::updateStatus);
 	// 
 	// buttonClaim1
 	// 
@@ -49,6 +51,8 @@ void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime
 	buttonClaim->TabIndex = 17;
 	buttonClaim->Text = L"Claim";
 	buttonClaim->UseVisualStyleBackColor = false;
+	buttonClaim->Tag = L"claim" + "|" + orderNumber;
+	buttonClaim->Click += gcnew System::EventHandler(this, &queueListView::updateStatus);
 	// 
 	// estTime1
 	// 
@@ -94,4 +98,9 @@ void queueListView::addQueue(int orderNumber, DateTime transactionTime, DateTime
 	id->Size = System::Drawing::Size(46, 21);
 	id->TabIndex = 14;
 	id->Text = tempId;
+}
+
+void queueListView::clearQueue() {
+	noOfPanels--;
+	queueFlowlist->Controls->Clear();
 }

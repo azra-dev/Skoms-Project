@@ -1,4 +1,6 @@
 #include "skomsAppCashier.h"
+
+/**/
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThreadAttribute]
@@ -8,3 +10,4 @@ int main(array<String^>^ args) {
 	ANONASLOPEZMERCADOCPE104LProject::skomsAppCashier form;
 	Application::Run(% form);
 }
+
