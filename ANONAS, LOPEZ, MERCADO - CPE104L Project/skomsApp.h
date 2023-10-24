@@ -2,19 +2,14 @@
 // Anonas, Azrael
 // Lopez, John Mark
 // Mercado, Godwyn Summer
-// LIBRARIES --------------------------------------------------------------------------
-#include <msclr/marshal_cppstd.h>
-#include <string>
-#include <iostream>
+
 #include "order.h"
 #pragma once
 
-//customerView customer;
 
-void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice, int estTime);
+inline void itemOnClick(System::Windows::Forms::FlowLayoutPanel^ orderListPanel,System::Windows::Forms::Label^ itemName, System::Windows::Forms::Label^ itemPrice, int estTime);
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -28,8 +23,18 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	public ref class skomsApp : public System::Windows::Forms::Form
 	{
 	public:
+		Form^ mainForm;
 		skomsApp(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+
+		skomsApp(Form ^ f)
+		{
+			mainForm = f;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -93,6 +98,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 
 
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -152,6 +158,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemName5 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->watcher = (gcnew System::Windows::Forms::Timer(this->components));
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->orderGroup->SuspendLayout();
@@ -205,6 +212,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// orderGroup
 			// 
 			this->orderGroup->BackColor = System::Drawing::Color::White;
+			this->orderGroup->Controls->Add(this->button1);
 			this->orderGroup->Controls->Add(this->orderNum);
 			this->orderGroup->Controls->Add(this->placeOrderButton);
 			this->orderGroup->Controls->Add(this->enterCash);
@@ -601,6 +609,20 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->watcher->Interval = 1000;
 			this->watcher->Tick += gcnew System::EventHandler(this, &skomsApp::watcher_Tick);
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Green;
+			this->button1->ForeColor = System::Drawing::Color::Black;
+			this->button1->Location = System::Drawing::Point(154, 504);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(85, 25);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"Abort Order";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &skomsApp::abortOrder);
+			// 
 			// skomsApp
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -683,7 +705,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			MessageBox::Show("The input " + input + " is insufficient. Please try again.", "Error: Insufficient Amount.", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else {
-			if (MessageBox::Show("Cofirm order?", "Finalization", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
+			if (MessageBox::Show("Confirm place order?", "Finalization", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
 				orderDetail^ orderDetails = orderDetail::getOrderDetails();
 				orderDetails->placeOrder();
 			}
@@ -692,6 +714,16 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Void enterCash_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		orderListView^ orderGui = orderListView::getOrderList();
 		orderGui->updateCash(this->enterCash->Text);
+	}
+
+	private: System::Void abortOrder(System::Object^ sender, System::EventArgs^ e) {
+		if (MessageBox::Show("Are you sure you would abort your waffle?", "Abortion.", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
+			orderDetail^ orderDetails = orderDetail::getOrderDetails();
+			orderDetails->clearOrder();
+			this->Hide();
+			mainForm->Show();
+		}
+
 	}
 };
 }

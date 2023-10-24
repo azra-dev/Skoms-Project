@@ -29,6 +29,8 @@ public:
 	int getItemQuantity() { return itemQuantity; }
 	float getItemPrice() { return itemPrice; }
 	int getEstimatedTime() { return estimatedTime; }
+	Panel^ getItemPanel() { return itemPanel; }
+	void setItemQuantity(int v) { itemQuantity = v; }
 
 	//update the quantity of the item through panels
 	void updateItem();
@@ -82,6 +84,9 @@ public:
 
 	//finalize placing the order
 	void placeOrder();
+
+	//clear the orders
+	void clearOrder();
 };
 
 public ref class orderListView {

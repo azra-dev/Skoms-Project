@@ -141,6 +141,14 @@ void orderDetail::placeOrder() {
 	sw->Close();
 }
 
+void orderDetail::clearOrder() {
+	for each (order ^ order in customerOrderList) {
+		orderListView^ orderGui = orderGui->getOrderList();
+		orderGui->deleteOrderPanel(order->getItemPanel());
+	}
+	customerOrderList->Clear();
+}
+
 //orderListView -----------------------------------------------------------------------
 void orderListView::updateTotalLabel(float cost) {
 	totalCost->Text = L"P" + cost.ToString();

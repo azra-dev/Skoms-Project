@@ -1,15 +1,22 @@
+// SKOM PROJECT FOR CPE104L, BY: -----------------------------------------------------
+// Anonas, Azrael
+// Lopez, John Mark
+// Mercado, Godwyn Summer
+
 #pragma once
 #include "queue.h"
 
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
 
+	/*
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	*/
 
 	/// <summary>
 	/// Summary for skomsAppCashier
@@ -17,8 +24,18 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	public ref class skomsAppCashier : public System::Windows::Forms::Form
 	{
 	public:
+		Form^ cashierForm;
 		skomsAppCashier(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+
+		skomsAppCashier(Form^ f)
+		{
+			cashierForm = f;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here

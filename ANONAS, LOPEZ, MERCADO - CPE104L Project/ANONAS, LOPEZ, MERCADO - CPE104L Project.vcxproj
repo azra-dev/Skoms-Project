@@ -114,6 +114,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.WMPLib.1.0">
+      <HintPath>Interop\AxInterop.WMPLib.1.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WMPLib.1.0">
+      <HintPath>Interop\Interop.WMPLib.1.0.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -129,6 +135,7 @@
     <ClCompile Include="sampleControl.cpp" />
     <ClCompile Include="skomsApp.cpp" />
     <ClCompile Include="skomsAppCashier.cpp" />
+    <ClCompile Include="startup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyUserControl.h">
@@ -146,6 +153,9 @@
     <ClInclude Include="skomsAppCashier.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="startup.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyUserControl.resx">
@@ -161,6 +171,9 @@
     <EmbeddedResource Include="skomsAppCashier.resx">
       <DependentUpon>skomsAppCashier.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="startup.resx">
+      <DependentUpon>startup.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ANONASLOPEZMERCADOCPE104LProject.rc" />
@@ -172,6 +185,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib.1.0">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
