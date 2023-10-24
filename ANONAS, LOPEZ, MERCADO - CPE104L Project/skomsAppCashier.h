@@ -24,7 +24,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	public ref class skomsAppCashier : public System::Windows::Forms::Form
 	{
 	public:
-		Form^ cashierForm;
+		Form^ mainForm;
 		skomsAppCashier(void)
 		{
 			InitializeComponent();
@@ -35,7 +35,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 
 		skomsAppCashier(Form^ f)
 		{
-			cashierForm = f;
+			mainForm = f;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -63,6 +63,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Windows::Forms::Label^ header_Status;
 	private: System::Windows::Forms::FlowLayoutPanel^ queueFlowlist;
 	private: System::Windows::Forms::Timer^ watcher;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -112,6 +113,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->header_OrderNumber = (gcnew System::Windows::Forms::Label());
 			this->queueFlowlist = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->watcher = (gcnew System::Windows::Forms::Timer(this->components));
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->headPanel->SuspendLayout();
@@ -217,7 +219,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			// 
 			this->queueFlowlist->Location = System::Drawing::Point(59, 134);
 			this->queueFlowlist->Name = L"queueFlowlist";
-			this->queueFlowlist->Size = System::Drawing::Size(1018, 437);
+			this->queueFlowlist->Size = System::Drawing::Size(1018, 418);
 			this->queueFlowlist->TabIndex = 5;
 			// 
 			// watcher
@@ -226,12 +228,27 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->watcher->Interval = 1000;
 			this->watcher->Tick += gcnew System::EventHandler(this, &skomsAppCashier::watcher_Tick);
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Green;
+			this->button1->ForeColor = System::Drawing::Color::Black;
+			this->button1->Location = System::Drawing::Point(992, 558);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(85, 25);
+			this->button1->TabIndex = 11;
+			this->button1->Text = L"End shift";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &skomsAppCashier::End_Shift);
+			// 
 			// skomsAppCashier
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(1136, 609);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->headPanel);
 			this->Controls->Add(this->queueFlowlist);
 			this->Controls->Add(this->menuShadow);
@@ -262,6 +279,13 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	private: System::Void watcher_Tick(System::Object^ sender, System::EventArgs^ e) {
 		queueListView^ qView = queueListView::getOrderListView();
 		qView->watcherTick();
+	}
+	private: System::Void End_Shift(System::Object^ sender, System::EventArgs^ e) {
+		if (MessageBox::Show("Are you sure you will leave the counter?", "End Shift Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
+			
+			this->Hide();
+			mainForm->Show();
+		}
 	}
 };
 }

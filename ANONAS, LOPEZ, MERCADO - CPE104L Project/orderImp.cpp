@@ -142,11 +142,13 @@ void orderDetail::placeOrder() {
 }
 
 void orderDetail::clearOrder() {
-	for each (order ^ order in customerOrderList) {
-		orderListView^ orderGui = orderGui->getOrderList();
-		orderGui->deleteOrderPanel(order->getItemPanel());
+	if (customerOrderList != nullptr) {
+		for each (order ^ order in customerOrderList) {
+			orderListView^ orderGui = orderGui->getOrderList();
+			orderGui->deleteOrderPanel(order->getItemPanel());
+		}
+		customerOrderList->Clear();
 	}
-	customerOrderList->Clear();
 }
 
 //orderListView -----------------------------------------------------------------------
