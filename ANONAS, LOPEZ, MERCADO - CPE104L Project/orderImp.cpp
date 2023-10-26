@@ -132,11 +132,11 @@ void orderDetail::placeOrder() {
 	}
 
 	orderStatus = "waiting";
-	sw->WriteLine(orderNumber + "," + itemList + "," + quantityList + "," + totalCost + "," + transTime + "," + totalEstimatedTime + "," +  "," + orderStatus);
+	sw->WriteLine(orderNumber + "," + itemList + "," + quantityList + "," + totalCost + "," + transTime + "," + totalEstimatedTime + "," + orderStatus);
 	sw->Close();
 
 	sw = gcnew StreamWriter("transactions/queue" + DateTime::Today.AddSeconds(totalEstimatedTime).ToString("d")->Replace("/", "-") + ".csv", true);
-	sw->WriteLine(orderNumber + "," + transTime + "," + totalEstimatedTime + "," + "," + orderStatus);
+	sw->WriteLine(orderNumber + "," + transTime + "," + totalEstimatedTime + "," + orderStatus);
 	sw->Close();
 }
 
