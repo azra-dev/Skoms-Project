@@ -669,10 +669,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 		orderDetail^ orderDetails = orderDetail::getOrderDetails();
 		orderGui->loadGUI(this->orderNum, this->dateTrans, this->totalCost, this->placeOrderButton);
 		orderDetails->getOrderNumber();
+		orderGui->updateCash("");
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName1, itemPrice1, 60);	
+		itemOnClick(this->orderList, itemName1, itemPrice1, 60000);	
 	}
 	private: System::Void click_item2(System::Object^ sender, System::EventArgs^ e) {
 		itemOnClick(this->orderList, itemName2, itemPrice2, 90);
@@ -705,9 +706,14 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			MessageBox::Show("The input " + input + " is insufficient. Please try again.", "Error: Insufficient Amount.", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else {
-			if (MessageBox::Show("Confirm place order?", "Finalization", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
-				orderDetail^ orderDetails = orderDetail::getOrderDetails();
+			String^ warning;
+			orderDetail^ orderDetails = orderDetail::getOrderDetails();
+			if (DateTime::Today.AddSeconds(orderDetails->getTotalEstimatedTime()).Date > DateTime::Today.Date) warning = "\nYou have ordered too much items, your order will be served the next day(s).";
+			if (MessageBox::Show("Confirm place order?" + warning, "Finalization", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == ::DialogResult::Yes) {
 				orderDetails->placeOrder();
+				orderDetails->clearOrder();
+				this->Hide();
+				mainForm->Show();
 			}
 		}
 	}

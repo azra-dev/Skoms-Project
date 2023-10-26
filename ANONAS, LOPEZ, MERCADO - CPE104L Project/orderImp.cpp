@@ -56,11 +56,11 @@ void order::updateItem(int mode) {
 
 //orderDetail -----------------------------------------------------------------------
 void orderDetail::getOrderNumber() {
-	if (!File::Exists("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv")) {
+	if (!File::Exists("transactions/queue" + DateTime::Now.Date.AddSeconds(totalEstimatedTime).ToString("d")->Replace("/", "-") + ".csv")) {
 		orderNumber = 1;
 	}
 	else {
-		StreamReader^ sr = File::OpenText("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+		StreamReader^ sr = File::OpenText("transactions/queue" + DateTime::Now.Date.AddSeconds(totalEstimatedTime).ToString("d")->Replace("/", "-") + ".csv");
 		String^ line;
 		while ((line = sr->ReadLine()) != nullptr) {
 			array<String^>^ args = line->Split(',');
@@ -103,23 +103,22 @@ void orderDetail::deleteFromOrderList(order^ itemDetail) {
 }
 
 void orderDetail::calculateTotal() {
-	float total = 0; int time = 0; int offset = 0;
+	float total = 0; int time = 0;
 	for each (order^ item in customerOrderList) {
 		total += item->getItemPrice() * item->getItemQuantity();
 		time += item->getEstimatedTime() / 4 * (item->getItemQuantity() + 3);
-		offset += item->getItemQuantity() / 4 * item->getEstimatedTime();
 	}
 	totalCost = total;
 	totalEstimatedTime = time;
-	totalOffsetTime = offset;
 	orderListView^ orderGUI = orderListView::getOrderList();
 	orderGUI->updateTotalLabel(totalCost);
+	getOrderNumber();
 }
 
 void orderDetail::placeOrder() {
 	getOrderNumber();
-
-	StreamWriter^ sw = gcnew StreamWriter("transaction" + DateTime::Today.ToString("d")->Replace("/", "-") + ".csv", true);
+	StreamWriter^ sw = gcnew StreamWriter("transactions/transaction" + DateTime::Today.AddSeconds(totalEstimatedTime).ToString("d")->Replace("/", "-") + ".csv", true);
+	Debug::WriteLine("transactions/transaction" + DateTime::Today.AddSeconds(totalEstimatedTime).ToString("d")->Replace("/", "-") + ".csv");
 	String^ itemList = ""; String^ quantityList = ""; int iter = 0; int quant = 0;
 	for each (order ^ order in customerOrderList) quant++;
 	for each (order ^ order in customerOrderList) {
@@ -133,11 +132,11 @@ void orderDetail::placeOrder() {
 	}
 
 	orderStatus = "waiting";
-	sw->WriteLine(orderNumber + "," + itemList + "," + quantityList + "," + totalCost + "," + transTime + "," + totalEstimatedTime + "," + totalOffsetTime + "," + orderStatus);
+	sw->WriteLine(orderNumber + "," + itemList + "," + quantityList + "," + totalCost + "," + transTime + "," + totalEstimatedTime + "," +  "," + orderStatus);
 	sw->Close();
 
-	sw = gcnew StreamWriter("queue" + DateTime::Today.ToString("d")->Replace("/", "-") + ".csv", true);
-	sw->WriteLine(orderNumber + "," + transTime + "," + totalEstimatedTime + "," + totalOffsetTime + "," + orderStatus);
+	sw = gcnew StreamWriter("transactions/queue" + DateTime::Today.AddSeconds(totalEstimatedTime).ToString("d")->Replace("/", "-") + ".csv", true);
+	sw->WriteLine(orderNumber + "," + transTime + "," + totalEstimatedTime + "," + "," + orderStatus);
 	sw->Close();
 }
 
@@ -147,6 +146,7 @@ void orderDetail::clearOrder() {
 			orderListView^ orderGui = orderGui->getOrderList();
 			orderGui->deleteOrderPanel(order->getItemPanel());
 		}
+		totalEstimatedTime = 0;
 		customerOrderList->Clear();
 	}
 }

@@ -49,7 +49,6 @@ private:
 	float totalCost = 0;
 	float totalTender = 0;
 	int totalEstimatedTime = 0;
-	int totalOffsetTime = 0;
 	System::DateTime transTime;
 	String^ orderStatus;
 public:
@@ -78,6 +77,9 @@ public:
 
 	//calculate the total cost
 	void calculateTotal();
+
+	//get total estimated time
+	int getTotalEstimatedTime() { return totalEstimatedTime; }
 
 	//set dateTime
 	void setDateTime(DateTime t) { transTime = t; }

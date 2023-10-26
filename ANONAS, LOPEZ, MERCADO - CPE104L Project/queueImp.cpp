@@ -41,11 +41,11 @@ List<queue^>^ queueList::getOrderQueueList() {
 }
 
 void queueList::readQueue() {
-	if (File::Exists("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv")) {
+	if (File::Exists("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv")) {
 		queueListView^ qListView = queueListView::getOrderListView();
 		qListView->clearQueue();
 		refactorQueue();
-		StreamReader^ sr = File::OpenText("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+		StreamReader^ sr = File::OpenText("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 		String^ line;
 		while ((line = sr->ReadLine()) != nullptr && !String::IsNullOrWhiteSpace(line)) {
 			
@@ -55,7 +55,6 @@ void queueList::readQueue() {
 			Debug::WriteLine(args[1]);
 			queueObj->setTransTime(Convert::ToDateTime(args[1]));
 			queueObj->setServingTime((Convert::ToDateTime(args[1])).AddSeconds(Convert::ToInt32(args[2])));
-			queueObj->setOffsetTime(Convert::ToInt32(args[3]));
 			queueObj->setStatus(args[4]);
 			Debug::WriteLine(queueObj);
 			addToQueueList(queueObj);
@@ -66,7 +65,7 @@ void queueList::readQueue() {
 }
 
 void queueList::refactorQueue() {
-	StreamReader^ sr = File::OpenText("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	StreamReader^ sr = File::OpenText("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 	List<String^>^ data = gcnew List<String^>;
 	String^ line;
 
@@ -79,8 +78,8 @@ void queueList::refactorQueue() {
 	sr->Close();
 
 	if (counter != data->Count) {
-		File::Delete("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
-		StreamWriter^ sw = gcnew StreamWriter("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+		File::Delete("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+		StreamWriter^ sw = gcnew StreamWriter("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 		for each (String ^ d in data) {
 			sw->WriteLine(d);
 		}
@@ -101,7 +100,7 @@ void queueList::addToQueueList(queue^ queueObj) {
 
 void queueList::removeToQueueList(queue^ queueObj) {
 	getOrderQueueList()->Remove(queueObj);
-	StreamReader^ sr = File::OpenText("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	StreamReader^ sr = File::OpenText("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 	List<String^>^ data = gcnew List<String^>;
 	String^ line;
 
@@ -114,8 +113,8 @@ void queueList::removeToQueueList(queue^ queueObj) {
 	sr->Close();
 
 	//insert new data in queue
-	File::Delete("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
-	StreamWriter^ sw = gcnew StreamWriter("queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	File::Delete("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	StreamWriter^ sw = gcnew StreamWriter("transactions/queue" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 	for each (String ^ d in data) {
 		sw->WriteLine(d);
 	}
@@ -123,7 +122,7 @@ void queueList::removeToQueueList(queue^ queueObj) {
 
 	//store excluded transaction data
 	data->Clear();
-	sr = File::OpenText("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	sr = File::OpenText("transactions/transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 	while ((line = sr->ReadLine()) != nullptr) {
 		array<String^>^ args = line->Split(',');
 		if (args[0] != Convert::ToString(queueObj->getOrderNumber()))
@@ -134,8 +133,8 @@ void queueList::removeToQueueList(queue^ queueObj) {
 	sr->Close();
 
 	//insert new data in transaction
-	File::Delete("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
-	sw = gcnew StreamWriter("transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	File::Delete("transactions/transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
+	sw = gcnew StreamWriter("transactions/transaction" + DateTime::Now.Date.ToString("d")->Replace("/", "-") + ".csv");
 	for each (String ^ d in data) {
 		sw->WriteLine(d);
 	}
