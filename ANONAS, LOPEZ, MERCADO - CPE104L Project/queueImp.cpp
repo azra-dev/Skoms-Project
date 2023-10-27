@@ -51,11 +51,9 @@ void queueList::readQueue() {
 			queue^ queueObj = gcnew queue;
 			array<String^>^ args = line->Split(',');
 			queueObj->setOrderNumber(Convert::ToInt32(args[0]));
-			Debug::WriteLine(args[1]);
 			queueObj->setTransTime(Convert::ToDateTime(args[1]));
 			queueObj->setServingTime((Convert::ToDateTime(args[1])).AddSeconds(Convert::ToInt32(args[2])));
 			queueObj->setStatus(args[3]);
-			Debug::WriteLine(queueObj);
 			addToQueueList(queueObj);
 		}
 		sr->Close();

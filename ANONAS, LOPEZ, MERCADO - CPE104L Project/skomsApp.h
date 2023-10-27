@@ -126,6 +126,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->menuLabel = (gcnew System::Windows::Forms::Label());
 			this->menuShadow = (gcnew System::Windows::Forms::PictureBox());
 			this->orderGroup = (gcnew System::Windows::Forms::GroupBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->orderNum = (gcnew System::Windows::Forms::Label());
 			this->placeOrderButton = (gcnew System::Windows::Forms::Button());
 			this->enterCash = (gcnew System::Windows::Forms::TextBox());
@@ -158,7 +159,6 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemName5 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->watcher = (gcnew System::Windows::Forms::Timer(this->components));
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->menuShadow))->BeginInit();
 			this->orderGroup->SuspendLayout();
@@ -230,6 +230,20 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->orderGroup->Size = System::Drawing::Size(348, 549);
 			this->orderGroup->TabIndex = 3;
 			this->orderGroup->TabStop = false;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Green;
+			this->button1->ForeColor = System::Drawing::Color::Black;
+			this->button1->Location = System::Drawing::Point(154, 504);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(85, 25);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"Abort Order";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &skomsApp::abortOrder);
 			// 
 			// orderNum
 			// 
@@ -398,6 +412,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic1->TabIndex = 0;
 			this->itemPic1->TabStop = false;
+			this->itemPic1->Click += gcnew System::EventHandler(this, &skomsApp::click_item1);
 			// 
 			// itemPrice1
 			// 
@@ -458,6 +473,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic2->TabIndex = 0;
 			this->itemPic2->TabStop = false;
+			this->itemPic2->Click += gcnew System::EventHandler(this, &skomsApp::click_item2);
 			// 
 			// item3
 			// 
@@ -506,6 +522,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic3->TabIndex = 0;
 			this->itemPic3->TabStop = false;
+			this->itemPic3->Click += gcnew System::EventHandler(this, &skomsApp::click_item3);
 			// 
 			// item4
 			// 
@@ -554,6 +571,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->itemPic4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->itemPic4->TabIndex = 0;
 			this->itemPic4->TabStop = false;
+			this->itemPic4->Click += gcnew System::EventHandler(this, &skomsApp::click_item4);
 			// 
 			// item5
 			// 
@@ -602,26 +620,13 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &skomsApp::click_item5);
 			// 
 			// watcher
 			// 
 			this->watcher->Enabled = true;
 			this->watcher->Interval = 1000;
 			this->watcher->Tick += gcnew System::EventHandler(this, &skomsApp::watcher_Tick);
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::Transparent;
-			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
-			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Green;
-			this->button1->ForeColor = System::Drawing::Color::Black;
-			this->button1->Location = System::Drawing::Point(154, 504);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(85, 25);
-			this->button1->TabIndex = 10;
-			this->button1->Text = L"Abort Order";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &skomsApp::abortOrder);
 			// 
 			// skomsApp
 			// 
@@ -673,19 +678,19 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName1, itemPrice1, 60000);	
+		itemOnClick(this->orderList, itemName1, itemPrice1, 180);	
 	}
 	private: System::Void click_item2(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName2, itemPrice2, 90);
+		itemOnClick(this->orderList, itemName2, itemPrice2, 180);
 	}
 	private: System::Void click_item3(System::Object^ sender, System::EventArgs^ e) {
 		itemOnClick(this->orderList, itemName3, itemPrice3, 120);
 	}
 	private: System::Void click_item4(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName4, itemPrice4, 200);
+		itemOnClick(this->orderList, itemName4, itemPrice4, 180);
 	}
 	private: System::Void click_item5(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName5, itemPrice5, 200);
+		itemOnClick(this->orderList, itemName5, itemPrice5, 60);
 	}
 
 	private: System::Void watcher_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -695,9 +700,12 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	}
 	private: System::Void placeOrderButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ input = enterCash->Text;
-		float cash = (float)(Convert::ToDouble(input));
+		float check; float cash;
+		if (float::TryParse(input, check)) {
+			cash = (float)(Convert::ToDouble(input));
+		}
 		float cost = (float)(Convert::ToDouble( this->totalCost->Text->Substring(1, this->totalCost->Text->Length-1 )));
-		float check;
+		
 
 		if (!float::TryParse(input, check)) {
 			MessageBox::Show("The input " + input + " is not a valid numeric value. Please try again.", "Error: Invalid Input.", MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -729,7 +737,6 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->Hide();
 			mainForm->Show();
 		}
-
 	}
 };
 }
