@@ -1,7 +1,10 @@
-1,Smores|Cookies and Cream|Blueberry Cream Cheese,1|2|3,450,27/10/2023 8:35:24 am,600,waiting
-2,Smores|Choco Banana Peanut Butter,1|2,265,27/10/2023 8:35:35 am,405,waiting
-3,Choco Banana Peanut Butter,30,2700,27/10/2023 8:35:52 am,1485,waiting
-4,Blueberry Cream Cheese|french butter maple,1|3,255,27/10/2023 8:36:03 am,270,waiting
-5,Smores,1,85,27/10/2023 8:36:13 am,180,waiting
-6,Choco Banana Peanut Butter|Smores|Cookies and Cream|Blueberry Cream Cheese|french butter maple,7|1|1|1|2,980,27/10/2023 8:37:50 am,1005,waiting
+1,Smores|Cookies and Cream|Blueberry Cream Cheese,1|2|3,450,27/10/2023 8:35:24 am,600,waiting,claim
+2,Smores|Choco Banana Peanut Butter,1|2,265,27/10/2023 8:35:35 am,405,waiting,claim
+3,Choco Banana Peanut Butter,30,2700,27/10/2023 8:35:52 am,1485,waiting,claim
+4,Blueberry Cream Cheese|french butter maple,1|3,255,27/10/2023 8:36:03 am,270,waiting,claim
+5,Smores,1,85,27/10/2023 8:36:13 am,180,waiting,cancel
+6,Choco Banana Peanut Butter|Smores|Cookies and Cream|Blueberry Cream Cheese|french butter maple,7|1|1|1|2,980,27/10/2023 8:37:50 am,1005,waiting,cancel
 7,Blueberry Cream Cheese,1,75,27/10/2023 8:44:15 am,180,waiting
+8,Choco Banana Peanut Butter|Smores|Cookies and Cream|Blueberry Cream Cheese|french butter maple,1|1|2|1|2,510,27/10/2023 9:48:52 am,645,waiting
+9,Choco Banana Peanut Butter|Smores,5|1,535,27/10/2023 9:49:41 am,300,waiting
+10,Blueberry Cream Cheese,10,750,27/10/2023 9:49:58 am,585,waiting

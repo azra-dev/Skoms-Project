@@ -6,6 +6,7 @@
 #pragma once
 #include "skomsApp.h"
 #include "skomsAppCashier.h"
+#include "login.h"
 
 namespace ANONASLOPEZMERCADOCPE104LProject {
 	//ref class skomsApp;
@@ -68,11 +69,11 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(startup::typeid));
 			this->axWindowsMediaPlayer1 = (gcnew AxWMPLib::AxWindowsMediaPlayer());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->axWindowsMediaPlayer1))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -99,40 +100,20 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->panel1->Size = System::Drawing::Size(1136, 223);
 			this->panel1->TabIndex = 1;
 			// 
-			// pictureBox1
+			// button2
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(488, 288);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(150, 150);
-			this->pictureBox1->TabIndex = 0;
-			this->pictureBox1->TabStop = false;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->BackColor = System::Drawing::Color::Crimson;
+			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(248, 69);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(648, 38);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Welcome to the Famouse Belgian Waffle!";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(456, 107);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(228, 24);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Select your user type.";
+			this->button2->ForeColor = System::Drawing::Color::White;
+			this->button2->Location = System::Drawing::Point(586, 157);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(136, 33);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"Cashier";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &startup::cashierType);
 			// 
 			// button1
 			// 
@@ -149,20 +130,40 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &startup::customerType);
 			// 
-			// button2
+			// label2
 			// 
-			this->button2->BackColor = System::Drawing::Color::Crimson;
-			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(586, 157);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(136, 33);
-			this->button2->TabIndex = 3;
-			this->button2->Text = L"Cashier";
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &startup::cashierType);
+			this->label2->Location = System::Drawing::Point(456, 107);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(228, 24);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Select your user type.";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(248, 69);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(628, 38);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Welcome to the Famous Belgian Waffle!";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox1->Location = System::Drawing::Point(488, 288);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(150, 150);
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
 			// 
 			// startup
 			// 
@@ -199,9 +200,15 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	}
 
 	private: System::Void cashierType(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
+		login^ loginForm = gcnew login(this);
+		loginForm->ShowDialog();
 		skomsAppCashier^ cashierForm = gcnew skomsAppCashier(this);
 		cashierForm->ShowDialog();
+		/*
+		this->Hide();
+		
+		cashierForm->ShowDialog();
+		*/
 	}
 
 };

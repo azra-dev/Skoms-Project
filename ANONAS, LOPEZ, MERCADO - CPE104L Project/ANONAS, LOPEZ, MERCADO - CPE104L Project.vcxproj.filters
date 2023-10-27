@@ -42,6 +42,9 @@
     <ClCompile Include="startup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="login.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="skomsApp.h">
@@ -66,6 +69,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="startup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="login.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="loginImp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

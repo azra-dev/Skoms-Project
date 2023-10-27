@@ -127,6 +127,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="login.cpp" />
     <ClCompile Include="MyUserControl.cpp" />
     <ClCompile Include="orderImp.cpp" />
     <ClCompile Include="orderViewImp.cpp" />
@@ -138,6 +139,10 @@
     <ClCompile Include="startup.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="login.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="loginImp.h" />
     <ClInclude Include="MyUserControl.h">
       <FileType>CppControl</FileType>
     </ClInclude>
@@ -158,6 +163,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControl.resx">
       <DependentUpon>MyUserControl.h</DependentUpon>
     </EmbeddedResource>

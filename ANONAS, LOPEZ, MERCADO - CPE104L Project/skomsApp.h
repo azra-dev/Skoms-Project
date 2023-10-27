@@ -678,7 +678,7 @@ namespace ANONASLOPEZMERCADOCPE104LProject {
 	}
 
 	private: System::Void click_item1(System::Object^ sender, System::EventArgs^ e) {
-		itemOnClick(this->orderList, itemName1, itemPrice1, 180);	
+		itemOnClick(this->orderList, itemName1, itemPrice1, 60);	
 	}
 	private: System::Void click_item2(System::Object^ sender, System::EventArgs^ e) {
 		itemOnClick(this->orderList, itemName2, itemPrice2, 180);
